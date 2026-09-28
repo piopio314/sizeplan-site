@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ - RiskCanvas MT5</title>
+  <meta name="description" content="Answers about RiskCanvas for MetaTrader 5: how the lot size is calculated, brokers and accounts, safety, automation, prop-firm limits and trades opened from mobile.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Risk<em>Canvas</em></span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html#features">Features</a>
+        <a href="quick-start.html">Quick start</a>
+        <a href="faq.html" aria-current="page">FAQ</a>
+        <a class="btn btn-small" href="index.html#availability">MQL5 Market</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <div class="wrap">
+        <span class="badge">FAQ</span>
+        <h1>Frequently asked questions</h1>
+        <p>Short, precise answers. If your question is not here, the <a href="quick-start.html">quick start</a> walks through every control.</p>
+      </div>
+    </div>
+
+    <section style="padding-top: 8px;">
+      <div class="wrap" style="max-width: 860px;">
+        <div class="faq">
+          <h2>The basics</h2>
+
+          <details>
+            <summary>What is RiskCanvas?</summary>
+            <div><p>An Expert Advisor for MetaTrader 5 that turns a trade idea into a sized, reviewed order and helps you manage it afterwards. You draw Entry, Stop Loss and Take Profit on the chart; RiskCanvas calculates the lot from the risk you choose, shows the loss and gain in money, and gives you one panel to manage every position and pending order in the account.</p></div>
+          </details>
+
+          <details>
+            <summary>Does RiskCanvas open trades on its own?</summary>
+            <div>
+              <p>No. It has no strategy and never opens a position by itself. Every entry is one you create and, by default, review and confirm.</p>
+              <p>The only automatic actions are the ones you switch on for a position: moving the stop to break-even and trailing it. Both are off by default.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Is it safe to attach to my live account?</summary>
+            <div><p>With the default settings, RiskCanvas cannot send anything: <code>EnableTrading</code> is <code>false</code> until you change it, and the panel only plans. We still recommend learning it on a demo account first.</p></div>
+          </details>
+
+          <details>
+            <summary>Does it work with MetaTrader 4?</summary>
+            <div><p>No. RiskCanvas is built for MetaTrader 5 only.</p></div>
+          </details>
+
+          <details>
+            <summary>Is there a trial?</summary>
+            <div><p>RiskCanvas will be distributed through the MQL5 Market, which offers a free demo version of every product for the Strategy Tester. That lets you try the panel before buying.</p></div>
+          </details>
+
+          <h2>Risk and position size</h2>
+
+          <details>
+            <summary>How is the lot size calculated?</summary>
+            <div>
+              <p>RiskCanvas turns your risk choice into a budget in account currency (percent of equity, percent of balance, or a cash amount). It asks MetaTrader how much one lot would lose between your entry and your stop, adds your commission if you entered it, and divides the budget by that loss.</p>
+              <p>The result is rounded <strong>down</strong> to the symbol's lot step and checked again with the final volume, so the estimated loss at SL does not exceed your budget. In LOT mode you choose the volume and the panel shows the resulting risk.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>What if the minimum lot is more than my risk allows?</summary>
+            <div><p>RiskCanvas tells you ("Risk budget is below the minimum volume") and does not send a larger position than your budget allows. Increase the budget, move the stop closer, or switch to LOT mode if you accept the larger risk.</p></div>
+          </details>
+
+          <details>
+            <summary>What happens at the broker's maximum lot?</summary>
+            <div><p>The volume is capped at the maximum and the panel shows the unused part of your budget. Your stop stays exactly where you put it; it is never moved to use up the budget.</p></div>
+          </details>
+
+          <details>
+            <summary>How exact are the risk figures?</summary>
+            <div><p>They use your broker's own contract data and MetaTrader's profit calculation, so they match what the platform expects. They remain estimates: price gaps, slippage, swaps and commissions not entered in the inputs can change the real result.</p></div>
+          </details>
+
+          <details>
+            <summary>Which instruments are supported?</summary>
+            <div><p>Any symbol your broker offers in MetaTrader 5: forex, metals, indices, energies, stocks or crypto CFDs. Tick size, lot limits, stop levels and filling modes are read from each symbol at runtime, so there are no broker or symbol presets to maintain.</p></div>
+          </details>
+
+          <h2>Orders and management</h2>
+
+          <details>
+            <summary>Does it place market, limit and stop orders?</summary>
+            <div><p>Yes. A plan that follows the market price is sent as a market order. A plan with a fixed entry becomes a limit or stop order automatically, depending on which side of the current price the entry is. The review step always shows which type will be sent.</p></div>
+          </details>
+
+          <details>
+            <summary>Can I manage trades opened on my phone, by hand or by another EA?</summary>
+            <div>
+              <p>Yes. The Trade Manager shows every position and pending order in the account, whoever opened it. You can change SL, TP and entry, move to break-even, close part or all of a position and cancel orders.</p>
+              <p>Break-even and trailing for those trades run in the desktop terminal, so RiskCanvas has to stay attached to a chart there, with Algo Trading on.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Can I have several take-profit levels?</summary>
+            <div><p>Up to five. Each earlier target closes the share of the position you set; the last one is the take profit stored on the order at the broker.</p></div>
+          </details>
+
+          <details>
+            <summary>Which trailing stop methods are available?</summary>
+            <div><p>Fixed distance, step distance (moves only after a minimum improvement), previous candle high/low, confirmed swing pivots (with adjustable left and right bars) and ATR (period and multiplier). Distances can be set in points or in R, where 1R is the initial stop distance. The automated stop only ever moves in your favour.</p></div>
+          </details>
+
+          <details>
+            <summary>What if I move the stop myself while trailing is on?</summary>
+            <div><p>RiskCanvas does not fight you. It notices the external change, pauses trailing for that position and shows why. You can turn it back on from the Trade Manager.</p></div>
+          </details>
+
+          <h2>Reliability</h2>
+
+          <details>
+            <summary>What happens if MetaTrader restarts or the connection drops mid-order?</summary>
+            <div><p>Before a request is sent, RiskCanvas stores it. After a restart it compares the stored request with what the terminal actually has (orders, positions and history) and shows the outcome. A request whose result is unknown is never sent a second time automatically, so a reconnect cannot double your position.</p></div>
+          </details>
+
+          <details>
+            <summary>Are my settings kept?</summary>
+            <div><p>Yes. The panel remembers its position and your plan per chart, and break-even and trailing settings are saved per position. You can also save named setups (risk mode, targets, automation) and switch between them in one click; choosing a setup never sends an order.</p></div>
+          </details>
+
+          <details>
+            <summary>Does it work on hedging and netting accounts?</summary>
+            <div><p>Yes, both account types are supported.</p></div>
+          </details>
+
+          <h2>Prop firms and limits</h2>
+
+          <details>
+            <summary>Can it help me stay within prop-firm rules?</summary>
+            <div>
+              <p>It offers optional limits: maximum risk per trade, maximum combined risk to SL across open positions, a daily equity-loss limit, a maximum number of positions and a maximum spread. When a limit is reached, RiskCanvas refuses new entries and says which limit it was.</p>
+              <p>These are aids, not guarantees. Every firm measures its rules in its own way, and RiskCanvas is not affiliated with any of them.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Does RiskCanvas guarantee profits?</summary>
+            <div><p>No tool can. RiskCanvas helps you execute your own plan with a known risk; the trading decisions and their results remain yours.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="quick-start.html">Quick start</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. RiskCanvas is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Test on a demo account before trading live.</p>
+      <p>&copy; 2026 RiskCanvas. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. RiskCanvas is not affiliated with MetaQuotes.</p>
+    </div>
+  </footer>
+</body>
+</html>

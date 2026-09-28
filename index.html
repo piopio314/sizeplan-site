@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RiskCanvas MT5 - Visual trade planner and risk manager for MetaTrader 5</title>
+  <meta name="description" content="RiskCanvas MT5 lets you drag Entry, Stop Loss and Take Profit on the chart, sizes the position from your risk, and helps you manage it with break-even, trailing and partial closes.">
+  <meta property="og:title" content="RiskCanvas MT5 - Plan the trade on the chart">
+  <meta property="og:description" content="Drag the plan, see the risk in money, review before sending. A trade planner and manager for MetaTrader 5.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Risk<em>Canvas</em></span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html#features">Features</a>
+        <a href="quick-start.html">Quick start</a>
+        <a href="faq.html">FAQ</a>
+        <a class="btn btn-small" href="#availability">MQL5 Market</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="badge">For MetaTrader 5</span>
+          <h1>Plan the trade on the chart.<br><em>Know the risk before you send it.</em></h1>
+          <p class="lead">RiskCanvas draws your Entry, Stop Loss and Take Profit as one draggable plan, sizes the position from the risk you choose, and shows the result in money. You review every order before it goes out, then manage it from one panel.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="quick-start.html">Quick start</a>
+            <a class="btn" href="#features">See features</a>
+          </div>
+          <p class="note">Coming soon to the MQL5 Market. Try it on a demo account first.</p>
+        </div>
+
+        <figure class="hero-figure">
+          <svg viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="plan-title">
+            <title id="plan-title">A RiskCanvas plan on a chart: take profit zone above, stop loss zone below the entry line</title>
+            <rect width="560" height="360" fill="#000f18"/>
+            <g stroke="#0b2b38" stroke-width="1">
+              <line x1="0" y1="60" x2="560" y2="60"/><line x1="0" y1="130" x2="560" y2="130"/>
+              <line x1="0" y1="200" x2="560" y2="200"/><line x1="0" y1="270" x2="560" y2="270"/>
+            </g>
+            <g stroke-width="2">
+              <line x1="30" y1="250" x2="30" y2="300" stroke="#ff394d"/><rect x="24" y="262" width="12" height="28" fill="#ff394d"/>
+              <line x1="52" y1="240" x2="52" y2="290" stroke="#00e06d"/><rect x="46" y="250" width="12" height="30" fill="#00e06d"/>
+              <line x1="74" y1="222" x2="74" y2="268" stroke="#00e06d"/><rect x="68" y="232" width="12" height="26" fill="#00e06d"/>
+              <line x1="96" y1="226" x2="96" y2="262" stroke="#ff394d"/><rect x="90" y="236" width="12" height="18" fill="#ff394d"/>
+              <line x1="118" y1="206" x2="118" y2="256" stroke="#00e06d"/><rect x="112" y="214" width="12" height="32" fill="#00e06d"/>
+              <line x1="140" y1="196" x2="140" y2="236" stroke="#00e06d"/><rect x="134" y="204" width="12" height="22" fill="#00e06d"/>
+              <line x1="162" y1="200" x2="162" y2="238" stroke="#ff394d"/><rect x="156" y="208" width="12" height="20" fill="#ff394d"/>
+              <line x1="184" y1="186" x2="184" y2="226" stroke="#00e06d"/><rect x="178" y="194" width="12" height="26" fill="#00e06d"/>
+            </g>
+            <rect x="230" y="70" width="300" height="130" fill="#00be75" opacity="0.22"/>
+            <rect x="230" y="200" width="300" height="70" fill="#e7395a" opacity="0.22"/>
+            <line x1="230" y1="70" x2="530" y2="70" stroke="#00e06d" stroke-width="1.5"/>
+            <line x1="230" y1="200" x2="530" y2="200" stroke="#00dcf1" stroke-width="2"/>
+            <line x1="230" y1="270" x2="530" y2="270" stroke="#ff394d" stroke-width="1.5"/>
+            <g font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#e7f5fa">
+              <rect x="220" y="44" width="280" height="26" rx="7" fill="#00311f" stroke="#00e06d"/>
+              <text x="234" y="62">TP  1.10420  |  +200.00 USD  |  400 pt</text>
+              <rect x="220" y="187" width="280" height="26" rx="7" fill="#003142" stroke="#00dcf1"/>
+              <text x="234" y="205">ENTRY  |  0.50 lot  |  1.10020</text>
+              <rect x="220" y="270" width="280" height="26" rx="7" fill="#41141f" stroke="#ff394d"/>
+              <text x="234" y="288">SL  1.09820  |  -100.00 USD  |  200 pt</text>
+            </g>
+            <g font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#a4c2d6">
+              <text x="238" y="330">Risk 1% of equity  -  R:R 2.00  -  volume floored to the lot step</text>
+            </g>
+          </svg>
+          <figcaption>Illustration of a plan on the chart. Values are an example on a 10,000 USD account.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <h2>Everything a manual trader needs around the order</h2>
+        <p class="section-lead">RiskCanvas does not predict the market and does not trade on its own. It removes the arithmetic and the guesswork between your idea and the order, and keeps the trade under control afterwards.</p>
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 20 6v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></div>
+            <h3>Position size from your risk</h3>
+            <p>Choose percent of equity, percent of balance, a cash amount or a fixed lot. The lot is calculated from the stop distance with MetaTrader's own profit calculation, and floored to the symbol's lot step so the risk never exceeds your budget.</p>
+          </article>
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></div>
+            <h3>A plan you can drag</h3>
+            <p>Entry, Stop Loss and Take Profit move together or one by one. Lock the risk/reward ratio or a price, let the plan follow the market price, or type exact values in the panel.</p>
+          </article>
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></div>
+            <h3>Up to five targets</h3>
+            <p>Split the exit across up to five take-profit levels, each with its own share of the position. The last target is the order's server-side TP.</p>
+          </article>
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg></div>
+            <h3>Review before sending</h3>
+            <p>Every entry shows its order type (market, limit or stop), volume and prices before it is sent. Trading is off until you enable it in the inputs, so a fresh install only plans.</p>
+          </article>
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div>
+            <h3>One trade manager for the account</h3>
+            <p>See every open position and pending order in the account, including trades opened on your phone or by hand. Adjust SL, TP and entry, move to break-even, close part or all, cancel orders.</p>
+          </article>
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+            <h3>Break-even and trailing stop</h3>
+            <p>Opt-in automation per position: break-even or break-even plus an offset, and trailing by fixed distance, steps, previous candle, confirmed swing or ATR. The automated stop only ever moves in your favour.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <h2>From idea to managed trade in three steps</h2>
+        <p class="section-lead">No pop-ups to dismiss and no lot tables to consult. The panel always shows the lot, the risk and the reward in your account currency.</p>
+        <div class="steps">
+          <div class="card"><h3>Draw the plan</h3><p>Click BUY or SELL. A plan appears at the market price; drag the stop and target where your analysis says they belong.</p></div>
+          <div class="card"><h3>Check the numbers</h3><p>Pick your risk basis. RiskCanvas sizes the position and shows the loss at SL and the gain at TP in money and points.</p></div>
+          <div class="card"><h3>Review, confirm, manage</h3><p>Review the order and confirm it. Then manage it from the Trade Manager, by hand or with break-even and trailing.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap grid grid-2">
+        <div>
+          <h2>Built to be predictable</h2>
+          <p class="section-lead">A trading tool has to behave the same way on every broker, every symbol and every restart. That is where most of RiskCanvas's engineering goes.</p>
+        </div>
+        <ul class="checklist">
+          <li><strong>Works with any broker.</strong> Lot limits, tick size, stop levels and filling modes are read from each symbol at runtime. There are no broker-specific presets.</li>
+          <li><strong>Honest risk figures.</strong> The volume is never rounded up to reach a minimum. When the broker's maximum lot caps the size, the panel shows the unused budget instead of silently moving your stop.</li>
+          <li><strong>Safe after a restart.</strong> A request that was in flight is stored and reconciled with the terminal after a restart or disconnect. It is never resent automatically.</li>
+          <li><strong>Your limits, if you want them.</strong> Optional caps for risk per trade, total risk to SL, daily equity loss, open positions and spread.</li>
+          <li><strong>Your settings travel.</strong> Save named setups and switch between them in one click. Choosing a setup never sends an order.</li>
+          <li><strong>You stay in charge.</strong> RiskCanvas warns and explains; it does not stop you from doing what MetaTrader allows.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="alt cta-band" id="availability">
+      <div class="wrap">
+        <h2>Coming soon to the MQL5 Market</h2>
+        <p class="section-lead" style="margin: 0 auto;">RiskCanvas will be sold and licensed through the official MQL5 Market, where you can also download a free demo for the Strategy Tester. Until then, read how it works.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="quick-start.html">Read the quick start</a>
+          <a class="btn" href="faq.html">Frequently asked questions</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="quick-start.html">Quick start</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. RiskCanvas is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Test on a demo account before trading live.</p>
+      <p>&copy; 2026 RiskCanvas. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. RiskCanvas is not affiliated with MetaQuotes.</p>
+    </div>
+  </footer>
+</body>
+</html>

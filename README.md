@@ -1,6 +1,6 @@
-# RiskCanvas website
+# SizePlan website
 
-Static marketing and help site for RiskCanvas MT5. Plain HTML and CSS, no build
+Static marketing and help site for SizePlan MT5. Plain HTML and CSS, no build
 step, hosted on GitHub Pages.
 
 - `index.html` - landing page
@@ -11,5 +11,6 @@ step, hosted on GitHub Pages.
 - `assets/logo.svg` - logo and favicon
 
 Rules: English only; describe only behaviour the current EA build has; never
-promise profits; keep the risk warning in every footer. When a custom domain is
-bought, add a `CNAME` file containing it and set the DNS records GitHub shows.
+promise profits; keep the risk warning in every footer. The custom domain is
+`sizeplan.com` (file `CNAME`; DNS at Porkbun: four GitHub Pages A records and
+`www` CNAME to `piopio314.github.io`).

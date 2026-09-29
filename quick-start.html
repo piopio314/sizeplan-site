@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quick start - RiskCanvas MT5</title>
-  <meta name="description" content="Install RiskCanvas in MetaTrader 5, plan your first trade on the chart, size it from your risk and manage it with break-even and trailing stop, step by step.">
+  <title>Quick start - SizePlan MT5</title>
+  <meta name="description" content="Install SizePlan in MetaTrader 5, plan your first trade on the chart, size it from your risk and manage it with break-even and trailing stop, step by step.">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Risk<em>Canvas</em></span></a>
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Size<em>Plan</em></span></a>
       <nav class="nav" aria-label="Main">
         <a href="index.html#features">Features</a>
         <a href="quick-start.html" aria-current="page">Quick start</a>
@@ -26,7 +26,7 @@
       <div class="wrap">
         <span class="badge">About 5 minutes</span>
         <h1>Quick start</h1>
-        <p>From installation to a planned, reviewed and managed trade. Follow it on a demo account first; nothing here requires real money.</p>
+        <p>From installation to a planned, sent and managed trade. Follow it on a demo account first; nothing here requires real money.</p>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
             <li><a href="#attach">Attach to a chart</a></li>
             <li><a href="#plan">Plan a trade</a></li>
             <li><a href="#risk">Choose your risk</a></li>
-            <li><a href="#send">Review and send</a></li>
+            <li><a href="#send">Send the order</a></li>
             <li><a href="#manage">Manage the trade</a></li>
             <li><a href="#automation">Break-even and trailing</a></li>
             <li><a href="#inputs">Inputs reference</a></li>
@@ -58,21 +58,21 @@
 
           <h2 id="install">2. Install</h2>
           <ol>
-            <li>Open the <strong>Market</strong> tab in MetaTrader 5 and search for <strong>RiskCanvas</strong>.</li>
+            <li>Open the <strong>Market</strong> tab in MetaTrader 5 and search for <strong>SizePlan</strong>.</li>
             <li>Buy or download it. MetaTrader installs it for you.</li>
             <li>It appears in the <strong>Navigator</strong> under <strong>Expert Advisors &gt; Market</strong>. If you do not see it, right-click the Navigator and choose <strong>Refresh</strong>.</li>
           </ol>
-          <div class="callout"><p>RiskCanvas is not listed yet. This page describes the steps as they will be at launch.</p></div>
+          <div class="callout"><p>SizePlan is not listed yet. This page describes the steps as they will be at launch.</p></div>
 
           <h2 id="attach">3. Attach to a chart</h2>
           <ol>
             <li>Open a chart of the symbol you want to trade.</li>
-            <li>Drag <strong>RiskCanvas</strong> from the Navigator onto the chart.</li>
+            <li>Drag <strong>SizePlan</strong> from the Navigator onto the chart.</li>
             <li>On the <strong>Common</strong> tab, tick <strong>Allow Algo Trading</strong>.</li>
-            <li>On the <strong>Inputs</strong> tab, set <code>EnableTrading</code> to <code>true</code> if you want to send orders. With the default <code>false</code>, RiskCanvas only plans: the panel works fully, but no order can be sent.</li>
+            <li>On the <strong>Inputs</strong> tab, set <code>EnableTrading</code> to <code>true</code> if you want to send orders. With the default <code>false</code>, SizePlan only plans: the panel works fully, but no order can be sent.</li>
             <li>Click <strong>OK</strong>. The panel appears on the left of the chart.</li>
           </ol>
-          <p>The panel can be moved by dragging it. The gear opens the display settings (panel scale and saved setups), the pin fixes the panel in place and <strong>X</strong> folds it without stopping RiskCanvas.</p>
+          <p>The panel can be moved by dragging it. The gear opens the display settings (panel scale and saved setups), the pin fixes the panel in place and <strong>X</strong> folds it without stopping SizePlan.</p>
 
           <h2 id="plan">4. Plan a trade</h2>
           <ol>
@@ -102,13 +102,13 @@
           <p>Use the <strong>-</strong> / <strong>+</strong> buttons or the mouse wheel over the field, or click the field and type. The lot is always rounded <em>down</em> to the symbol's lot step, so the loss at SL stays within your budget. The SL and TP rows show the distance in points and the amount in your account currency.</p>
           <div class="callout warn"><p>Risk figures are estimates from your broker's symbol data. Gaps, slippage, commissions and swaps can make the real result differ. Enter your commission per lot in the <code>RoundTurnCommissionPerLot</code> input to include it.</p></div>
 
-          <h2 id="send">6. Review and send</h2>
+          <h2 id="send">6. Send the order</h2>
           <ol>
-            <li>With <code>EnableTrading=true</code>, click <strong>BUY</strong> or <strong>SELL</strong> again. RiskCanvas prepares the order and shows it: type (MARKET, LIMIT or STOP), volume, entry, SL and TP.</li>
-            <li>Check the values, then click the green <strong>CONFIRM</strong> button at the bottom of the panel.</li>
-            <li>If the market moved more than your allowed drift (<code>MaxConfirmDriftPercent</code>, default 10% of the stop distance) or the volume would grow, you get an updated review instead of an order.</li>
+            <li>With <code>EnableTrading=true</code>, the button of the active side shows what will be sent, for example <strong>BUY LIMIT 0.50</strong>: the order type (MARKET, LIMIT or STOP) and the volume.</li>
+            <li>Check the plan on the chart, then click that button once. The order is sent at once, with the SL and TP from the plan. There is no separate confirmation step.</li>
+            <li>Clicking the button of the other side only switches the plan to that side; it sends nothing.</li>
           </ol>
-          <p>Prefer one click? Set <code>SafeMode=false</code> and <code>OneClick=true</code>. Orders are then sent without the review step.</p>
+          <p>A market order is sent with a slippage allowance of <code>MaxConfirmDriftPercent</code> (default 10% of the stop distance). If the outcome of a request is unknown, for example after a disconnect, SizePlan checks the terminal before it sends anything else.</p>
 
           <h2 id="manage">7. Manage the trade</h2>
           <p>Click <strong>OPEN POSITIONS</strong> or <strong>PENDING ORDERS</strong> to open the Trade Manager. It lists every position and pending order in the account, whoever opened it; switch between <strong>THIS SYMBOL</strong> and <strong>ALL SYMBOLS</strong> at the top.</p>
@@ -125,7 +125,7 @@
             <li><strong>Breakeven</strong>: trigger distance in points or in R (multiples of the initial stop distance), plain BE or BE+ with an offset.</li>
             <li><strong>Trailing stop</strong>: fixed distance, step distance, previous candle, swing pivot or ATR, with a start trigger and the timeframe used for candles, swings and ATR.</li>
           </ul>
-          <p>Click <strong>APPLY TO POSITION</strong>. Automation runs while RiskCanvas is attached to a chart in this terminal with <code>EnableTrading=true</code> and Algo Trading on. The automated stop only moves in your favour. If you change the stop or the volume yourself, trailing pauses and tells you why instead of overriding you.</p>
+          <p>Click <strong>APPLY TO POSITION</strong>. Automation runs while SizePlan is attached to a chart in this terminal with <code>EnableTrading=true</code> and Algo Trading on. The automated stop only moves in your favour. If you change the stop or the volume yourself, trailing pauses and tells you why instead of overriding you.</p>
           <p>For your next trades, set the defaults with the <strong>BREAKEVEN</strong> and <strong>TRAILING</strong> tiles in the planning panel.</p>
 
           <h2 id="inputs">9. Inputs reference</h2>
@@ -139,26 +139,25 @@
               <tr><td><code>RewardRatio</code></td><td>2.0</td><td>Starting reward/risk ratio.</td></tr>
               <tr><td><code>InitialStopPoints</code></td><td>200</td><td>Starting stop distance of a new plan (widened automatically if it would be unreadably small on the chart).</td></tr>
               <tr><td><code>RoundTurnCommissionPerLot</code></td><td>0</td><td>Your commission per lot, included in the risk.</td></tr>
-              <tr><td><code>SafeMode</code> / <code>OneClick</code></td><td>true / false</td><td>Review before sending. One-click only with SafeMode=false and OneClick=true.</td></tr>
-              <tr><td><code>MaxConfirmDriftPercent</code></td><td>10</td><td>Allowed market move between review and confirm, as % of the stop distance. 0 = review again on any move.</td></tr>
+              <tr><td><code>SafeMode</code> / <code>OneClick</code></td><td>true / false</td><td>Trade Manager actions (SL/TP changes, break-even, partial or full close, cancel) show a review card first. They apply at once only with SafeMode=false and OneClick=true. New entries are always one click.</td></tr>
+              <tr><td><code>MaxConfirmDriftPercent</code></td><td>10</td><td>Allowed slippage for market orders, as % of the stop distance.</td></tr>
               <tr><td><code>MaxRiskPerTrade</code></td><td>0 (off)</td><td>Maximum estimated loss per trade, in account currency.</td></tr>
               <tr><td><code>MaxTotalRiskToSL</code></td><td>0 (off)</td><td>Maximum combined loss if every open position hits its SL.</td></tr>
-              <tr><td><code>MaxDailyEquityLoss</code></td><td>0 (off)</td><td>Stops new RiskCanvas entries after this equity loss in the server day.</td></tr>
+              <tr><td><code>MaxDailyEquityLoss</code></td><td>0 (off)</td><td>Stops new SizePlan entries after this equity loss in the server day.</td></tr>
               <tr><td><code>MaxManagedPositions</code></td><td>0 (off)</td><td>Maximum number of open positions on the chart's symbol before new entries are refused.</td></tr>
               <tr><td><code>MaxSpreadPoints</code></td><td>0 (off)</td><td>Refuses entries while the spread is wider.</td></tr>
               <tr><td><code>PartialClosePercent</code></td><td>50</td><td>Default share for % CLOSE.</td></tr>
-              <tr><td><code>MagicNumber</code></td><td>240926</td><td>Identifies RiskCanvas orders. Change it only if another EA uses the same number.</td></tr>
+              <tr><td><code>MagicNumber</code></td><td>240926</td><td>Identifies SizePlan orders. Change it only if another EA uses the same number.</td></tr>
               <tr><td><code>UseAutoDPI</code> / <code>ManualUIScale</code></td><td>true / 100</td><td>Panel size on high-DPI screens; the scale can also be changed in the settings.</td></tr>
-              <tr><td><code>UseHotkeys</code></td><td>true</td><td><kbd>B</kbd> and <kbd>S</kbd> switch the plan to buy or sell.</td></tr>
             </tbody>
           </table></div>
 
           <h2 id="trouble">10. If something does not work</h2>
           <ul>
-            <li><strong>The button reads "TRADING OFF - EnableTrading=false"</strong> - open the EA properties (F7 on the chart) and set <code>EnableTrading=true</code>.</li>
+            <li><strong>The status line says "Planning only: set EnableTrading=true in EA inputs to trade."</strong> - open the EA properties (F7 on the chart) and set <code>EnableTrading=true</code>.</li>
             <li><strong>"Algo trading is disabled in the terminal"</strong> - press <strong>Algo Trading</strong> in the toolbar and tick <strong>Allow Algo Trading</strong> in the EA properties.</li>
             <li><strong>"PLAN OFF CHART"</strong> - the saved plan is outside the visible prices; press <strong>MARKET PRICE</strong> to bring it back.</li>
-            <li><strong>"Risk budget is below the minimum volume"</strong> - the smallest lot the broker allows would risk more than your budget. Widen the budget or tighten the stop; RiskCanvas never rounds the lot up.</li>
+            <li><strong>"Risk budget is below the minimum volume"</strong> - the smallest lot the broker allows would risk more than your budget. Widen the budget or tighten the stop; SizePlan never rounds the lot up.</li>
             <li><strong>The broker rejected the order</strong> - the status line shows the broker's reason (for example stops too close or market closed). Adjust and try again; a rejected request is never resent automatically.</li>
           </ul>
           <p>More answers are in the <a href="faq.html">FAQ</a>.</p>
@@ -174,8 +173,8 @@
         <a href="quick-start.html">Quick start</a>
         <a href="faq.html">FAQ</a>
       </nav>
-      <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. RiskCanvas is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Test on a demo account before trading live.</p>
-      <p>&copy; 2026 RiskCanvas. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. RiskCanvas is not affiliated with MetaQuotes.</p>
+      <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. SizePlan is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Test on a demo account before trading live.</p>
+      <p>&copy; 2026 SizePlan. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. SizePlan is not affiliated with MetaQuotes.</p>
     </div>
   </footer>
 </body>

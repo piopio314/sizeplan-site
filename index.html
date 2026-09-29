@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RiskCanvas MT5 - Visual trade planner and risk manager for MetaTrader 5</title>
-  <meta name="description" content="RiskCanvas MT5 lets you drag Entry, Stop Loss and Take Profit on the chart, sizes the position from your risk, and helps you manage it with break-even, trailing and partial closes.">
-  <meta property="og:title" content="RiskCanvas MT5 - Plan the trade on the chart">
-  <meta property="og:description" content="Drag the plan, see the risk in money, review before sending. A trade planner and manager for MetaTrader 5.">
+  <title>SizePlan MT5 - Visual trade planner and risk manager for MetaTrader 5</title>
+  <meta name="description" content="SizePlan MT5 lets you drag Entry, Stop Loss and Take Profit on the chart, sizes the position from your risk, and helps you manage it with break-even, trailing and partial closes.">
+  <meta property="og:title" content="SizePlan MT5 - Plan the trade on the chart">
+  <meta property="og:description" content="Drag the plan, see the risk in money, send it with one click. A trade planner and manager for MetaTrader 5.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/style.css">
@@ -14,7 +14,7 @@
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Risk<em>Canvas</em></span></a>
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Size<em>Plan</em></span></a>
       <nav class="nav" aria-label="Main">
         <a href="index.html#features">Features</a>
         <a href="quick-start.html">Quick start</a>
@@ -30,7 +30,7 @@
         <div>
           <span class="badge">For MetaTrader 5</span>
           <h1>Plan the trade on the chart.<br><em>Know the risk before you send it.</em></h1>
-          <p class="lead">RiskCanvas draws your Entry, Stop Loss and Take Profit as one draggable plan, sizes the position from the risk you choose, and shows the result in money. You review every order before it goes out, then manage it from one panel.</p>
+          <p class="lead">SizePlan draws your Entry, Stop Loss and Take Profit as one draggable plan, sizes the position from the risk you choose, and shows the result in money. The BUY or SELL button shows exactly what will be sent; one click sends it, and you manage the trade from one panel.</p>
           <div class="actions">
             <a class="btn btn-primary" href="quick-start.html">Quick start</a>
             <a class="btn" href="#features">See features</a>
@@ -40,7 +40,7 @@
 
         <figure class="hero-figure">
           <svg viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="plan-title">
-            <title id="plan-title">A RiskCanvas plan on a chart: take profit zone above, stop loss zone below the entry line</title>
+            <title id="plan-title">A SizePlan plan on a chart: take profit zone above, stop loss zone below the entry line</title>
             <rect width="560" height="360" fill="#000f18"/>
             <g stroke="#0b2b38" stroke-width="1">
               <line x1="0" y1="60" x2="560" y2="60"/><line x1="0" y1="130" x2="560" y2="130"/>
@@ -81,7 +81,7 @@
     <section id="features">
       <div class="wrap">
         <h2>Everything a manual trader needs around the order</h2>
-        <p class="section-lead">RiskCanvas does not predict the market and does not trade on its own. It removes the arithmetic and the guesswork between your idea and the order, and keeps the trade under control afterwards.</p>
+        <p class="section-lead">SizePlan does not predict the market and does not trade on its own. It removes the arithmetic and the guesswork between your idea and the order, and keeps the trade under control afterwards.</p>
         <div class="grid grid-3">
           <article class="card">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 20 6v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></div>
@@ -100,8 +100,8 @@
           </article>
           <article class="card">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg></div>
-            <h3>Review before sending</h3>
-            <p>Every entry shows its order type (market, limit or stop), volume and prices before it is sent. Trading is off until you enable it in the inputs, so a fresh install only plans.</p>
+            <h3>One click, no surprises</h3>
+            <p>The BUY or SELL button shows the order type (market, limit or stop) and the volume before you click it, and one click sends it. Trading is off until you enable it in the inputs, so a fresh install only plans.</p>
           </article>
           <article class="card">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div>
@@ -123,8 +123,8 @@
         <p class="section-lead">No pop-ups to dismiss and no lot tables to consult. The panel always shows the lot, the risk and the reward in your account currency.</p>
         <div class="steps">
           <div class="card"><h3>Draw the plan</h3><p>Click BUY or SELL. A plan appears at the market price; drag the stop and target where your analysis says they belong.</p></div>
-          <div class="card"><h3>Check the numbers</h3><p>Pick your risk basis. RiskCanvas sizes the position and shows the loss at SL and the gain at TP in money and points.</p></div>
-          <div class="card"><h3>Review, confirm, manage</h3><p>Review the order and confirm it. Then manage it from the Trade Manager, by hand or with break-even and trailing.</p></div>
+          <div class="card"><h3>Check the numbers</h3><p>Pick your risk basis. SizePlan sizes the position and shows the loss at SL and the gain at TP in money and points.</p></div>
+          <div class="card"><h3>Send and manage</h3><p>Click BUY or SELL once to send the order. Then manage it from the Trade Manager, by hand or with break-even and trailing.</p></div>
         </div>
       </div>
     </section>
@@ -133,7 +133,7 @@
       <div class="wrap grid grid-2">
         <div>
           <h2>Built to be predictable</h2>
-          <p class="section-lead">A trading tool has to behave the same way on every broker, every symbol and every restart. That is where most of RiskCanvas's engineering goes.</p>
+          <p class="section-lead">A trading tool has to behave the same way on every broker, every symbol and every restart. That is where most of SizePlan's engineering goes.</p>
         </div>
         <ul class="checklist">
           <li><strong>Works with any broker.</strong> Lot limits, tick size, stop levels and filling modes are read from each symbol at runtime. There are no broker-specific presets.</li>
@@ -141,7 +141,7 @@
           <li><strong>Safe after a restart.</strong> A request that was in flight is stored and reconciled with the terminal after a restart or disconnect. It is never resent automatically.</li>
           <li><strong>Your limits, if you want them.</strong> Optional caps for risk per trade, total risk to SL, daily equity loss, open positions and spread.</li>
           <li><strong>Your settings travel.</strong> Save named setups and switch between them in one click. Choosing a setup never sends an order.</li>
-          <li><strong>You stay in charge.</strong> RiskCanvas warns and explains; it does not stop you from doing what MetaTrader allows.</li>
+          <li><strong>You stay in charge.</strong> SizePlan warns and explains; it does not stop you from doing what MetaTrader allows.</li>
         </ul>
       </div>
     </section>
@@ -149,7 +149,7 @@
     <section class="alt cta-band" id="availability">
       <div class="wrap">
         <h2>Coming soon to the MQL5 Market</h2>
-        <p class="section-lead" style="margin: 0 auto;">RiskCanvas will be sold and licensed through the official MQL5 Market, where you can also download a free demo for the Strategy Tester. Until then, read how it works.</p>
+        <p class="section-lead" style="margin: 0 auto;">SizePlan will be sold and licensed through the official MQL5 Market, where you can also download a free demo for the Strategy Tester. Until then, read how it works.</p>
         <div class="actions">
           <a class="btn btn-primary" href="quick-start.html">Read the quick start</a>
           <a class="btn" href="faq.html">Frequently asked questions</a>
@@ -165,8 +165,8 @@
         <a href="quick-start.html">Quick start</a>
         <a href="faq.html">FAQ</a>
       </nav>
-      <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. RiskCanvas is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Test on a demo account before trading live.</p>
-      <p>&copy; 2026 RiskCanvas. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. RiskCanvas is not affiliated with MetaQuotes.</p>
+      <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. SizePlan is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Test on a demo account before trading live.</p>
+      <p>&copy; 2026 SizePlan. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. SizePlan is not affiliated with MetaQuotes.</p>
     </div>
   </footer>
 </body>

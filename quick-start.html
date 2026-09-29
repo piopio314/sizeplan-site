@@ -26,7 +26,10 @@
   <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/assets/style.css">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -73,20 +76,21 @@
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Size<em>Plan</em></span></a>
+      <a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="28" height="28"><span>Size<em>Plan</em></span><small>MT5</small></a>
       <nav class="nav" aria-label="Main">
-        <a href="/#features">Features</a>
-        <a href="quick-start.html" aria-current="page">Quick start</a>
-        <a href="faq.html">FAQ</a>
-        <a class="btn btn-small" href="/#availability">MQL5 Market</a>
+        <a href="/#workflow">How it works</a>
+        <a href="/#calculator">Lot calculator</a>
+        <a href="/quick-start.html" aria-current="page">Quick start</a>
+        <a href="/faq.html">FAQ</a>
+        <a class="nav-market" href="/#availability">MQL5 Market</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <div class="page-head">
+    <div class="page-head paper">
       <div class="wrap">
-        <span class="badge">About 5 minutes</span>
+        <p class="eyebrow">Help <span>/</span> about 5 minutes</p>
         <h1>Quick start</h1>
         <p>From installation to a planned, sent and managed trade. Follow it on a demo account first; nothing here requires real money.</p>
       </div>
@@ -134,7 +138,11 @@
             <li>On the <strong>Inputs</strong> tab, set <code>EnableTrading</code> to <code>true</code> if you want to send orders. With the default <code>false</code>, SizePlan only plans: the panel works fully, but no order can be sent.</li>
             <li>Click <strong>OK</strong>. The panel appears on the left of the chart.</li>
           </ol>
-          <p>The panel can be moved by dragging it. The gear opens the display settings (panel scale and saved setups), the pin fixes the panel in place and <strong>X</strong> folds it without stopping SizePlan.</p>
+          <p>The panel can be moved by dragging it. The eye shows or hides your open positions on the chart, the gear opens the display settings (panel scale and saved setups), the pin fixes the panel in place and <strong>X</strong> folds it without stopping SizePlan.</p>
+          <figure class="shot narrow">
+            <img src="/assets/shot-panel.webp" width="383" height="680" loading="lazy" alt="SizePlan planning panel with the risk setup, order levels, auto management and the order button">
+          </figure>
+          <p class="caption">The planning panel with trading enabled, demo account.</p>
 
           <h2 id="plan">4. Plan a trade</h2>
           <ol>
@@ -142,6 +150,10 @@
             <li>Drag the <strong>SL</strong> or <strong>TP</strong> label to move that level. Drag the middle of the plan to move all levels together. Drag the right edge to make the box wider.</li>
             <li>Or type exact prices into the <strong>ENTRY</strong>, <strong>STOP LOSS</strong> and <strong>TAKE PROFIT</strong> fields; the small arrows move a price by one tick.</li>
           </ol>
+          <figure class="shot">
+            <img src="/assets/shot-chart.webp" width="1994" height="633" loading="lazy" alt="A SizePlan buy plan on a EURUSD chart: take profit zone above the entry, stop loss zone below, each tag with price, money and points">
+          </figure>
+          <p class="caption">A plan in the middle of the chart and, on the right, an open position drawn with its stop and target.</p>
           <p>Useful switches:</p>
           <ul>
             <li><strong>RR LOCKED / RR FREE</strong> - with the lock on, moving the stop moves the target so the reward/risk ratio stays the same.</li>
@@ -170,10 +182,15 @@
             <li>Check the plan on the chart, then click that button once. The order is sent at once, with the SL and TP from the plan. There is no separate confirmation step.</li>
             <li>Clicking the button of the other side only switches the plan to that side; it sends nothing.</li>
           </ol>
+          <p>After a successful send the plan is put away. The next click on BUY or SELL brings a fresh plan back at the market price; that click sends nothing.</p>
           <p>A market order is sent with a slippage allowance of <code>MaxConfirmDriftPercent</code> (default 10% of the stop distance). If the outcome of a request is unknown, for example after a disconnect, SizePlan checks the terminal before it sends anything else.</p>
 
           <h2 id="manage">7. Manage the trade</h2>
           <p>Click <strong>OPEN POSITIONS</strong> or <strong>PENDING ORDERS</strong> to open the Trade Manager. It lists every position and pending order in the account, whoever opened it; switch between <strong>THIS SYMBOL</strong> and <strong>ALL SYMBOLS</strong> at the top.</p>
+          <figure class="shot">
+            <img src="/assets/shot-manager.webp" width="1147" height="504" loading="lazy" alt="SizePlan Trade Manager with one EURUSD position selected: SL and TP steppers, net break-even, partial close, automation rows and the targets strip">
+          </figure>
+          <p class="caption">The Trade Manager with one position selected, demo account.</p>
           <ul>
             <li>Select a row. Its SL and TP (and entry, for a pending order) are editable right away, with <strong>-</strong>/<strong>+</strong> steppers, the distance in points and the amount at that level. <strong>REVIEW &amp; APPLY</strong> sends the change; <strong>REVERT</strong> reloads the live values.</li>
             <li><strong>BREAK-EVEN</strong> moves the stop to true break-even: just past the open price by the position's costs (commission in and out, a negative swap), so a close there nets zero. The button shows how much it covers.</li>
@@ -222,7 +239,7 @@
             <li><strong>"Risk budget is below the minimum volume"</strong> - the smallest lot the broker allows would risk more than your budget. Widen the budget or tighten the stop; SizePlan never rounds the lot up.</li>
             <li><strong>The broker rejected the order</strong> - the status line shows the broker's reason (for example stops too close or market closed). Adjust and try again; a rejected request is never resent automatically.</li>
           </ul>
-          <p>More answers are in the <a href="faq.html">FAQ</a>.</p>
+          <p>More answers are in the <a href="/faq.html">FAQ</a>.</p>
         </article>
       </div>
     </div>
@@ -232,11 +249,14 @@
     <div class="wrap">
       <nav aria-label="Footer">
         <a href="/">Home</a>
-        <a href="quick-start.html">Quick start</a>
-        <a href="faq.html">FAQ</a>
+        <a href="/#calculator">Lot calculator</a>
+        <a href="/quick-start.html">Quick start</a>
+        <a href="/faq.html">FAQ</a>
       </nav>
-      <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. SizePlan is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Test on a demo account before trading live.</p>
-      <p>&copy; 2026 SizePlan. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. SizePlan is not affiliated with MetaQuotes.</p>
+      <div>
+        <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. SizePlan is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Screenshots come from a demo account and are not a promise of results. Test on a demo account before trading live.</p>
+        <p>&copy; 2026 SizePlan. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. SizePlan is not affiliated with MetaQuotes.</p>
+      </div>
     </div>
   </footer>
 </body>

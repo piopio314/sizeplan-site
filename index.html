@@ -26,7 +26,10 @@
   <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/assets/style.css">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -69,8 +72,17 @@
         "One-click market, limit and stop orders",
         "Trade manager for every position and pending order in the account",
         "Break-even and trailing stop (fixed, step, candle, swing, ATR)",
-        "Optional prop-firm style limits: risk per trade, daily loss, max positions, max spread"
-      ]
+        "Optional prop-firm style limits: risk per trade, daily loss, max positions, max spread",
+        "Open positions drawn on the chart with their live stop and target result",
+        "Net break-even that covers commission and negative swap",
+        "Trade history with who closed each trade"
+      ],
+      "screenshot": [
+        "https://sizeplan.com/assets/shot-panel.webp",
+        "https://sizeplan.com/assets/shot-chart.webp",
+        "https://sizeplan.com/assets/shot-manager.webp"
+      ],
+      "softwareVersion": "3.44"
     }
   ]
 }
@@ -79,145 +91,250 @@
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Size<em>Plan</em></span></a>
+      <a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="28" height="28"><span>Size<em>Plan</em></span><small>MT5</small></a>
       <nav class="nav" aria-label="Main">
-        <a href="/#features">Features</a>
-        <a href="quick-start.html">Quick start</a>
-        <a href="faq.html">FAQ</a>
-        <a class="btn btn-small" href="#availability">MQL5 Market</a>
+        <a href="/#workflow">How it works</a>
+        <a href="/#calculator">Lot calculator</a>
+        <a href="/quick-start.html">Quick start</a>
+        <a href="/faq.html">FAQ</a>
+        <a class="nav-market" href="/#availability">MQL5 Market</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero paper">
       <div class="wrap">
-        <div>
-          <span class="badge">For MetaTrader 5</span>
-          <h1>Plan the trade on the chart.<br><em>Know the risk before you send it.</em></h1>
-          <p class="lead">SizePlan draws your Entry, Stop Loss and Take Profit as one draggable plan, sizes the position from the risk you choose, and shows the result in money. The BUY or SELL button shows exactly what will be sent; one click sends it, and you manage the trade from one panel.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="quick-start.html">Quick start</a>
-            <a class="btn" href="#features">See features</a>
+        <div class="hero-body">
+          <div>
+            <p class="eyebrow">Expert Advisor <span>/</span> MetaTrader 5</p>
+            <h1>Your stop decides the <span class="hl">lot&nbsp;size.</span></h1>
+            <p class="lead">Drag Entry, Stop Loss and Take Profit on the chart. SizePlan turns the risk you choose into the exact volume, shows the loss and the gain in money, and sends the order with one click.</p>
+            <div class="actions">
+              <a class="btn btn-buy" href="/quick-start.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9"/></svg>Quick start</a>
+              <a class="btn" href="#calculator">Try the lot calculator</a>
+            </div>
+            <ul class="specs">
+              <li>Platform <b>MetaTrader 5 for Windows</b></li>
+              <li>Brokers <b>Any; read from the symbol</b></li>
+              <li>Accounts <b>Hedging and netting</b></li>
+              <li>Trading after install <b>Off until you enable it</b></li>
+              <li>Where to get it <b>MQL5 Market, coming soon</b></li>
+            </ul>
           </div>
-          <p class="note">Coming soon to the MQL5 Market. Try it on a demo account first.</p>
+          <figure class="shot">
+            <img src="/assets/shot-panel.webp" width="383" height="680" fetchpriority="high" alt="SizePlan planning panel on EURUSD: BUY LIMIT 10.25 button, risk 1% of equity, reward to risk 1.99, entry 1.13309, stop loss 1.13214 at minus 994.25 USD and take profit 1.13498 at plus 1916.75 USD">
+            <span class="pin" style="left:50%;top:15%">1</span>
+            <span class="pin" style="left:2%;top:29%">2</span>
+            <span class="pin" style="left:98%;top:63.7%">3</span>
+            <span class="pin" style="left:98%;top:70%">4</span>
+            <span class="pin" style="left:2%;top:85.3%">5</span>
+          </figure>
+          <ol class="legend">
+            <li><b>What one click sends</b>The button names the order type and the volume: here a buy limit of 10.25 lots.</li>
+            <li><b>Your risk basis</b>Percent of equity, percent of balance, a cash amount or a fixed lot.</li>
+            <li><b>Lot from risk</b>1% of equity and a 95-point stop give 10.25 lots, rounded down to the lot step.</li>
+            <li><b>Money at every level</b>&minus;994.25 USD at the stop and +1916.75 USD at the target, before anything is sent.</li>
+            <li><b>Protection</b>Break-even and trailing stop, off until you switch them on.</li>
+          </ol>
         </div>
-
-        <figure class="hero-figure">
-          <svg viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="plan-title">
-            <title id="plan-title">A SizePlan plan on a chart: take profit zone above, stop loss zone below the entry line</title>
-            <rect width="560" height="360" fill="#000f18"/>
-            <g stroke="#0b2b38" stroke-width="1">
-              <line x1="0" y1="60" x2="560" y2="60"/><line x1="0" y1="130" x2="560" y2="130"/>
-              <line x1="0" y1="200" x2="560" y2="200"/><line x1="0" y1="270" x2="560" y2="270"/>
-            </g>
-            <g stroke-width="2">
-              <line x1="30" y1="250" x2="30" y2="300" stroke="#ff394d"/><rect x="24" y="262" width="12" height="28" fill="#ff394d"/>
-              <line x1="52" y1="240" x2="52" y2="290" stroke="#00e06d"/><rect x="46" y="250" width="12" height="30" fill="#00e06d"/>
-              <line x1="74" y1="222" x2="74" y2="268" stroke="#00e06d"/><rect x="68" y="232" width="12" height="26" fill="#00e06d"/>
-              <line x1="96" y1="226" x2="96" y2="262" stroke="#ff394d"/><rect x="90" y="236" width="12" height="18" fill="#ff394d"/>
-              <line x1="118" y1="206" x2="118" y2="256" stroke="#00e06d"/><rect x="112" y="214" width="12" height="32" fill="#00e06d"/>
-              <line x1="140" y1="196" x2="140" y2="236" stroke="#00e06d"/><rect x="134" y="204" width="12" height="22" fill="#00e06d"/>
-              <line x1="162" y1="200" x2="162" y2="238" stroke="#ff394d"/><rect x="156" y="208" width="12" height="20" fill="#ff394d"/>
-              <line x1="184" y1="186" x2="184" y2="226" stroke="#00e06d"/><rect x="178" y="194" width="12" height="26" fill="#00e06d"/>
-            </g>
-            <rect x="230" y="70" width="300" height="130" fill="#00be75" opacity="0.22"/>
-            <rect x="230" y="200" width="300" height="70" fill="#e7395a" opacity="0.22"/>
-            <line x1="230" y1="70" x2="530" y2="70" stroke="#00e06d" stroke-width="1.5"/>
-            <line x1="230" y1="200" x2="530" y2="200" stroke="#00dcf1" stroke-width="2"/>
-            <line x1="230" y1="270" x2="530" y2="270" stroke="#ff394d" stroke-width="1.5"/>
-            <g font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#e7f5fa">
-              <rect x="220" y="44" width="280" height="26" rx="7" fill="#00311f" stroke="#00e06d"/>
-              <text x="234" y="62">TP  1.10420  |  +200.00 USD  |  400 pt</text>
-              <rect x="220" y="187" width="280" height="26" rx="7" fill="#003142" stroke="#00dcf1"/>
-              <text x="234" y="205">ENTRY  |  0.50 lot  |  1.10020</text>
-              <rect x="220" y="270" width="280" height="26" rx="7" fill="#41141f" stroke="#ff394d"/>
-              <text x="234" y="288">SL  1.09820  |  -100.00 USD  |  200 pt</text>
-            </g>
-            <g font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#a4c2d6">
-              <text x="238" y="330">Risk 1% of equity  -  R:R 2.00  -  volume floored to the lot step</text>
-            </g>
-          </svg>
-          <figcaption>Illustration of a plan on the chart. Values are an example on a 10,000 USD account.</figcaption>
-        </figure>
       </div>
     </section>
 
-    <section id="features">
+    <div class="level"><span class="tag">On the chart</span></div>
+
+    <section id="chart" class="wide-shot">
       <div class="wrap">
-        <h2>Everything a manual trader needs around the order</h2>
-        <p class="section-lead">SizePlan does not predict the market and does not trade on its own. It removes the arithmetic and the guesswork between your idea and the order, and keeps the trade under control afterwards.</p>
-        <div class="grid grid-3">
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 20 6v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></div>
-            <h3>Position size from your risk</h3>
-            <p>Choose percent of equity, percent of balance, a cash amount or a fixed lot. The lot is calculated from the stop distance with MetaTrader's own profit calculation, and floored to the symbol's lot step so the risk never exceeds your budget.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></div>
-            <h3>A plan you can drag</h3>
-            <p>Entry, Stop Loss and Take Profit move together or one by one. Lock the risk/reward ratio or a price, let the plan follow the market price, or type exact values in the panel.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></div>
-            <h3>Up to five targets</h3>
-            <p>Split the exit across up to five take-profit levels, each with its own share of the position. The last target is the order's server-side TP.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg></div>
-            <h3>One click, no surprises</h3>
-            <p>The BUY or SELL button shows the order type (market, limit or stop) and the volume before you click it, and one click sends it. Trading is off until you enable it in the inputs, so a fresh install only plans.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div>
-            <h3>One trade manager for the account</h3>
-            <p>See every open position and pending order in the account, including trades opened on your phone or by hand. Adjust SL, TP and entry, move to break-even, close part or all, cancel orders.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
-            <h3>Break-even and trailing stop</h3>
-            <p>Opt-in automation per position: break-even or break-even plus an offset, and trailing by fixed distance, steps, previous candle, confirmed swing or ATR. The automated stop only ever moves in your favour.</p>
-          </article>
+        <div class="section-head">
+          <h2>The plan lives on the chart you already use.</h2>
+          <p>No separate window and no lot table. The plan box, the open position and the panel sit on the MetaTrader chart, and every tag shows price, money and distance.</p>
         </div>
+        <div class="scroller">
+          <figure class="shot">
+            <img src="/assets/shot-chart.webp" width="1994" height="633" loading="lazy" alt="EURUSD M1 chart with the SizePlan panel on the left, a buy plan with take profit plus 1947.68 USD and stop loss minus 994.56 USD, and an open 10.43 lot position drawn with its take profit and a stop already in profit">
+            <span class="pin" style="left:21.6%;top:40%">1</span>
+            <span class="pin" style="left:55.6%;top:12%">2</span>
+            <span class="pin" style="left:55.6%;top:54%">3</span>
+            <span class="pin" style="left:65%;top:22%">4</span>
+          </figure>
+        </div>
+        <p class="caption">EURUSD M1, demo account, SizePlan 3.44. On a narrow screen, scroll the picture sideways.</p>
+        <ol class="legend band-legend">
+          <li><b>The panel</b>Risk, reward/risk, the three levels and the order button, docked on the chart.</li>
+          <li><b>The plan</b>Drag the box, its TP and SL tags or the entry line. Each tag shows price, money and points.</li>
+          <li><b>Entry and lot</b>The entry tag carries the volume. A fixed entry becomes a limit or stop order; a plan that follows the price goes at market.</li>
+          <li><b>The open position</b>A filled trade is drawn with its live stop and target. Here the stop is already past entry: +62.58 USD locked.</li>
+        </ol>
       </div>
     </section>
 
-    <section class="alt">
+    <div class="level green"><span class="tag">Lot calculator</span></div>
+
+    <section id="calculator" class="paper">
       <div class="wrap">
-        <h2>From idea to managed trade in three steps</h2>
-        <p class="section-lead">No pop-ups to dismiss and no lot tables to consult. The panel always shows the lot, the risk and the reward in your account currency.</p>
-        <div class="steps">
-          <div class="card"><h3>Draw the plan</h3><p>Click BUY or SELL. A plan appears at the market price; drag the stop and target where your analysis says they belong.</p></div>
-          <div class="card"><h3>Check the numbers</h3><p>Pick your risk basis. SizePlan sizes the position and shows the loss at SL and the gain at TP in money and points.</p></div>
-          <div class="card"><h3>Send and manage</h3><p>Click BUY or SELL once to send the order. Then manage it from the Trade Manager, by hand or with break-even and trailing.</p></div>
+        <div class="section-head">
+          <h2>Lot size calculator: the arithmetic SizePlan does for you.</h2>
+          <p>Try it with your own numbers. Inside MetaTrader you never type the point value or the lot step: SizePlan reads them from your broker's symbol, so you only choose the risk and drag the stop.</p>
+        </div>
+        <div class="ledger-grid">
+          <form class="ledger-in" id="calc" autocomplete="off" onsubmit="return false">
+            <div class="field-row">
+              <div class="field"><label for="c-eq">Account equity</label><input id="c-eq" type="number" inputmode="decimal" min="0" step="any" value="50000"></div>
+              <div class="field"><label for="c-risk">Risk, % of equity</label><input id="c-risk" type="number" inputmode="decimal" min="0" step="any" value="1"></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label for="c-stop">Stop distance, points</label><input id="c-stop" type="number" inputmode="decimal" min="0" step="any" value="180"></div>
+              <div class="field"><label for="c-pv">Point value, 1.00 lot</label><input id="c-pv" type="number" inputmode="decimal" min="0" step="any" value="1"></div>
+            </div>
+            <div class="field">
+              <label for="c-com">Commission per lot, round turn</label><input id="c-com" type="number" inputmode="decimal" min="0" step="any" value="5">
+              <small>Point value: 1.00 for EURUSD on a USD account (one point = 0.00001). For other symbols check the contract specification.</small>
+            </div>
+            <div class="field-row">
+              <div class="field"><label for="c-step">Lot step</label><input id="c-step" type="number" inputmode="decimal" min="0" step="any" value="0.01"></div>
+              <div class="field"><label for="c-min">Minimum lot</label><input id="c-min" type="number" inputmode="decimal" min="0" step="any" value="0.01"></div>
+            </div>
+          </form>
+          <div class="ledger-out" aria-live="polite">
+            <h3>Ledger, in account currency</h3>
+            <div class="line"><span>Risk budget</span><span class="dots"></span><span class="v" id="o-budget">500.00</span></div>
+            <div class="line"><span>Loss per lot at the stop</span><span class="dots"></span><span class="v" id="o-move">180.00</span></div>
+            <div class="line"><span>+ commission per lot</span><span class="dots"></span><span class="v" id="o-com">5.00</span></div>
+            <div class="line"><span>Budget &divide; loss per lot</span><span class="dots"></span><span class="v" id="o-raw">2.7027</span></div>
+            <div class="line total"><span>Lot size, rounded down</span><span class="dots"></span><span class="v" id="o-lot">2.70</span></div>
+            <div class="line loss"><span>Estimated loss at the stop</span><span class="dots"></span><span class="v" id="o-loss">&minus;499.50</span></div>
+            <div class="line ok"><span>Budget left unused</span><span class="dots"></span><span class="v" id="o-left">0.50</span></div>
+            <p class="ledger-warn" id="o-warn"></p>
+            <p class="ledger-note">An estimate. Gaps, slippage and swaps can change the real result. In the terminal, SizePlan takes the loss per lot from MetaTrader's own profit calculation for the symbol, which also covers cross rates, metals, indices and other CFDs.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="wrap grid grid-2">
+    <div class="level"><span class="tag">Workflow</span></div>
+
+    <section id="workflow">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Five things you do with it, in this order.</h2>
+          <p>SizePlan has no strategy and never opens a trade by itself. It takes over the manual work around an order: before the click, at the click and after it.</p>
+        </div>
+        <div class="index">
+          <div class="index-row">
+            <div class="no">01</div>
+            <div><h3>Draw the plan</h3><p>Click BUY or SELL and a plan appears at the market price. Drag the stop and the target where your analysis puts them, or type exact prices.</p></div>
+            <ul>
+              <li>Lock the reward/risk ratio, or lock one price with a click on its label.</li>
+              <li>MARKET PRICE keeps the plan on the live price until you move it.</li>
+              <li>Up to five targets; each earlier one closes its share of the position.</li>
+              <li>Lines trigger where you see them: on a Bid chart the Ask-side levels are shifted by the spread when the order is sent.</li>
+            </ul>
+          </div>
+          <div class="index-row">
+            <div class="no">02</div>
+            <div><h3>Choose the risk, get the lot</h3><p>Percent of equity, percent of balance, a cash amount or a fixed lot. SizePlan asks MetaTrader what one lot loses at your stop, adds your commission and divides.</p></div>
+            <ul>
+              <li>Rounded down to the lot step, never up to reach a minimum.</li>
+              <li>At the broker's maximum lot, the unused budget is shown and the stop stays put.</li>
+              <li>Loss at the stop and gain at each target, in money and in points.</li>
+            </ul>
+          </div>
+          <div class="index-row">
+            <div class="no">03</div>
+            <div><h3>Send it with one click</h3><p>The active button reads, for example, BUY LIMIT 10.25. A plan that follows the price is sent at market; a fixed entry becomes a limit or stop order, depending on its side of the price.</p></div>
+            <ul>
+              <li>No confirmation dialog. The other side's button only switches the plan.</li>
+              <li>After a send the plan is put away; the next click brings a fresh one back at the market.</li>
+              <li>Optional caps: risk per trade, total risk to SL, daily equity loss, open positions, spread.</li>
+            </ul>
+          </div>
+          <div class="index-row">
+            <div class="no">04</div>
+            <div><h3>Manage every trade</h3><p>The Trade Manager lists every position and pending order in the account, whoever opened it: this chart, your phone or another EA.</p></div>
+            <ul>
+              <li>SL, TP and pending entry editable with steppers.</li>
+              <li>Partial or full close, cancel pending orders.</li>
+              <li>History for 7, 30 or 90 days, with who closed each trade.</li>
+              <li>Open positions drawn on the chart; the eye in the header hides them.</li>
+            </ul>
+          </div>
+          <div class="index-row">
+            <div class="no">05</div>
+            <div><h3>Protect it, automatically if you want</h3><p>Break-even and trailing are opt-in per position. They run while SizePlan is attached to a chart with trading enabled.</p></div>
+            <ul>
+              <li>Net break-even: the stop also covers commission and negative swap.</li>
+              <li>Auto break-even in points or R, with an optional offset.</li>
+              <li>Trailing by fixed distance, steps, previous candle, swing pivot or ATR.</li>
+              <li>The automated stop only tightens. If you move it yourself, automation pauses and says why.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="level"><span class="tag">Trade manager</span></div>
+
+    <section id="manager" class="paper wide-shot">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Every trade in the account, in one table.</h2>
+          <p>Select a row and its stop and target are editable at once. The details on the right and the targets strip below follow the selection.</p>
+        </div>
+        <div class="scroller">
+          <figure class="shot">
+            <img src="/assets/shot-manager.webp" width="1147" height="504" loading="lazy" alt="SizePlan Trade Manager: a EURUSD buy of 10.43 lots with break-even protection, SL and TP steppers, a net break-even button covering 52.16 USD of costs, partial close and the targets strip">
+            <span class="pin" style="left:54.8%;top:6.6%">1</span>
+            <span class="pin" style="left:49.6%;top:18.2%">2</span>
+            <span class="pin" style="left:63.4%;top:26%">3</span>
+            <span class="pin" style="left:63.4%;top:43%">4</span>
+            <span class="pin" style="left:63.4%;top:50%">5</span>
+            <span class="pin" style="left:63.4%;top:60.5%">6</span>
+            <span class="pin" style="left:1.2%;top:84%">7</span>
+          </figure>
+        </div>
+        <p class="caption">Trade Manager, demo account, SizePlan 3.44.</p>
+        <ol class="legend band-legend">
+          <li><b>Scope and lists</b>This symbol or all symbols; open positions, pending orders and history.</li>
+          <li><b>Protection at a glance</b>One chip per row: is the stop still risking money, or already at break-even?</li>
+          <li><b>Stop and target</b>Steppers, distance in points and money at the level. Review &amp; Apply sends, Revert reloads.</li>
+          <li><b>Net break-even</b>The stop goes past entry by the position's costs, so a close there nets zero.</li>
+          <li><b>Close part or all</b>% CLOSE takes the share in the field; CLOSE ALL closes the position.</li>
+          <li><b>Automation</b>Auto break-even and trailing stop for this position, off by default.</li>
+          <li><b>Targets strip</b>Booked and open result, stop, entry and every target on one line.</li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="level red"><span class="tag">Limits of the tool</span></div>
+
+    <section id="limits">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What SizePlan will not do.</h2>
+          <p>A tool that touches your orders has to be predictable. These are fixed rules, not settings. Beyond them it warns and explains; it does not stop you from doing what MetaTrader allows.</p>
+        </div>
+        <div class="wont">
+          <div><h3>Open a trade by itself</h3><p>No strategy and no signals. Every entry is one you draw and send.</p></div>
+          <div><h3>Round the lot up</h3><p>If the minimum lot risks more than your budget, it says so and sends nothing larger.</p></div>
+          <div><h3>Move your stop to spend the budget</h3><p>At the broker's maximum lot it shows the unused budget. The stop stays where you put it.</p></div>
+          <div><h3>Send twice after a disconnect</h3><p>A request is stored before it goes out and checked after a restart. An unknown outcome is never resent automatically.</p></div>
+          <div><h3>Trade straight after install</h3><p><code>EnableTrading</code> is off by default. Until you turn it on, the panel only plans.</p></div>
+          <div><h3>Guess your broker</h3><p>No presets. Tick size, lot limits, stop levels and filling modes are read from each symbol at runtime.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="level green"><span class="tag">Availability</span></div>
+
+    <section class="closing paper" id="availability">
+      <div class="wrap">
+        <h2>Coming soon to the <span class="hl">MQL5 Market.</span></h2>
         <div>
-          <h2>Built to be predictable</h2>
-          <p class="section-lead">A trading tool has to behave the same way on every broker, every symbol and every restart. That is where most of SizePlan's engineering goes.</p>
-        </div>
-        <ul class="checklist">
-          <li><strong>Works with any broker.</strong> Lot limits, tick size, stop levels and filling modes are read from each symbol at runtime. There are no broker-specific presets.</li>
-          <li><strong>Honest risk figures.</strong> The volume is never rounded up to reach a minimum. When the broker's maximum lot caps the size, the panel shows the unused budget instead of silently moving your stop.</li>
-          <li><strong>Safe after a restart.</strong> A request that was in flight is stored and reconciled with the terminal after a restart or disconnect. It is never resent automatically.</li>
-          <li><strong>Your limits, if you want them.</strong> Optional caps for risk per trade, total risk to SL, daily equity loss, open positions and spread.</li>
-          <li><strong>Your settings travel.</strong> Save named setups and switch between them in one click. Choosing a setup never sends an order.</li>
-          <li><strong>You stay in charge.</strong> SizePlan warns and explains; it does not stop you from doing what MetaTrader allows.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="alt cta-band" id="availability">
-      <div class="wrap">
-        <h2>Coming soon to the MQL5 Market</h2>
-        <p class="section-lead" style="margin: 0 auto;">SizePlan will be sold and licensed through the official MQL5 Market, where you can also download a free demo for the Strategy Tester. Until then, read how it works.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="quick-start.html">Read the quick start</a>
-          <a class="btn" href="faq.html">Frequently asked questions</a>
+          <p>SizePlan will be sold through the official MQL5 Market, which also offers a free demo for the Strategy Tester. Until then, the quick start walks through every control.</p>
+          <div class="actions">
+            <a class="btn btn-buy" href="/quick-start.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9"/></svg>Quick start</a>
+            <a class="btn" href="/faq.html">FAQ</a>
+          </div>
         </div>
       </div>
     </section>
@@ -227,12 +344,51 @@
     <div class="wrap">
       <nav aria-label="Footer">
         <a href="/">Home</a>
-        <a href="quick-start.html">Quick start</a>
-        <a href="faq.html">FAQ</a>
+        <a href="/#calculator">Lot calculator</a>
+        <a href="/quick-start.html">Quick start</a>
+        <a href="/faq.html">FAQ</a>
       </nav>
-      <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. SizePlan is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Test on a demo account before trading live.</p>
-      <p>&copy; 2026 SizePlan. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. SizePlan is not affiliated with MetaQuotes.</p>
+      <div>
+        <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. SizePlan is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Screenshots come from a demo account and are not a promise of results. Test on a demo account before trading live.</p>
+        <p>&copy; 2026 SizePlan. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. SizePlan is not affiliated with MetaQuotes.</p>
+      </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var ids = ["eq", "risk", "stop", "pv", "com", "step", "min"];
+      function num(id) { var v = parseFloat(document.getElementById("c-" + id).value); return isFinite(v) && v >= 0 ? v : 0; }
+      function out(id, text) { document.getElementById("o-" + id).textContent = text; }
+      function money(v) { return v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+      function update() {
+        var budget = num("eq") * num("risk") / 100;
+        var move = num("stop") * num("pv");
+        var perLot = move + num("com");
+        var step = num("step") || 0.01;
+        var minLot = num("min");
+        var decimals = Math.max(0, Math.min(8, Math.ceil(-Math.log10(step) - 1e-9)));
+        var raw = perLot > 0 ? budget / perLot : 0;
+        var lot = Math.floor(raw / step + 1e-9) * step;
+        var warn = document.getElementById("o-warn");
+        warn.className = "ledger-warn";
+        if (perLot > 0 && lot < minLot) {
+          warn.textContent = "The minimum lot of " + minLot.toFixed(decimals) + " would risk " + money(minLot * perLot) +
+            ", more than the budget. SizePlan does not round the lot up: widen the budget or bring the stop closer.";
+          warn.className = "ledger-warn on";
+          lot = 0;
+        }
+        out("budget", money(budget));
+        out("move", money(move));
+        out("com", money(num("com")));
+        out("raw", raw.toFixed(4));
+        out("lot", lot.toFixed(decimals));
+        out("loss", "−" + money(lot * perLot));
+        out("left", money(Math.max(0, budget - lot * perLot)));
+      }
+      ids.forEach(function (id) { document.getElementById("c-" + id).addEventListener("input", update); });
+      update();
+    })();
+  </script>
 </body>
 </html>

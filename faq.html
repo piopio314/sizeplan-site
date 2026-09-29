@@ -26,7 +26,10 @@
   <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/assets/style.css">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -221,27 +224,28 @@
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Size<em>Plan</em></span></a>
+      <a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="28" height="28"><span>Size<em>Plan</em></span><small>MT5</small></a>
       <nav class="nav" aria-label="Main">
-        <a href="/#features">Features</a>
-        <a href="quick-start.html">Quick start</a>
-        <a href="faq.html" aria-current="page">FAQ</a>
-        <a class="btn btn-small" href="/#availability">MQL5 Market</a>
+        <a href="/#workflow">How it works</a>
+        <a href="/#calculator">Lot calculator</a>
+        <a href="/quick-start.html">Quick start</a>
+        <a href="/faq.html" aria-current="page">FAQ</a>
+        <a class="nav-market" href="/#availability">MQL5 Market</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <div class="page-head">
+    <div class="page-head paper">
       <div class="wrap">
-        <span class="badge">FAQ</span>
+        <p class="eyebrow">Help <span>/</span> 20 answers</p>
         <h1>Frequently asked questions</h1>
-        <p>Short, precise answers. If your question is not here, the <a href="quick-start.html">quick start</a> walks through every control.</p>
+        <p>Short, precise answers. If your question is not here, the <a href="/quick-start.html">quick start</a> walks through every control.</p>
       </div>
     </div>
 
-    <section style="padding-top: 8px;">
-      <div class="wrap" style="max-width: 860px;">
+    <section class="faq-wrap">
+      <div class="wrap">
         <div class="faq">
           <h2>The basics</h2>
 
@@ -373,11 +377,14 @@
     <div class="wrap">
       <nav aria-label="Footer">
         <a href="/">Home</a>
-        <a href="quick-start.html">Quick start</a>
-        <a href="faq.html">FAQ</a>
+        <a href="/#calculator">Lot calculator</a>
+        <a href="/quick-start.html">Quick start</a>
+        <a href="/faq.html">FAQ</a>
       </nav>
-      <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. SizePlan is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Test on a demo account before trading live.</p>
-      <p>&copy; 2026 SizePlan. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. SizePlan is not affiliated with MetaQuotes.</p>
+      <div>
+        <p class="risk">Risk warning: trading foreign exchange, CFDs and other leveraged products carries a high level of risk and may not be suitable for every investor. You can lose more than your initial deposit. SizePlan is a planning and trade-management tool; it does not provide investment advice and does not guarantee any result. Risk figures are estimates based on your broker's symbol data: gaps, slippage, commissions and swaps can change the actual outcome. Screenshots come from a demo account and are not a promise of results. Test on a demo account before trading live.</p>
+        <p>&copy; 2026 SizePlan. MetaTrader and MQL5 are trademarks of MetaQuotes Ltd. SizePlan is not affiliated with MetaQuotes.</p>
+      </div>
     </div>
   </footer>
 </body>

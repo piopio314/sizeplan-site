@@ -1,0 +1,20 @@
+{
+  "name": "SizePlan MT5",
+  "short_name": "SizePlan",
+  "icons": [
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#001622",
+  "background_color": "#001622",
+  "display": "browser",
+  "start_url": "/"
+}

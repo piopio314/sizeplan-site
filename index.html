@@ -3,20 +3,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SizePlan MT5 - Visual trade planner and risk manager for MetaTrader 5</title>
-  <meta name="description" content="SizePlan MT5 lets you drag Entry, Stop Loss and Take Profit on the chart, sizes the position from your risk, and helps you manage it with break-even, trailing and partial closes.">
-  <meta property="og:title" content="SizePlan MT5 - Plan the trade on the chart">
-  <meta property="og:description" content="Drag the plan, see the risk in money, send it with one click. A trade planner and manager for MetaTrader 5.">
+  <title>SizePlan MT5 - Lot Size Calculator and Trade Manager for MetaTrader 5</title>
+  <meta name="description" content="Drag Entry, Stop Loss and Take Profit on the MT5 chart, get the lot size from your risk in money, send with one click and manage the trade with break-even, trailing stop and partial take profits.">
+  <link rel="canonical" href="https://sizeplan.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#001622">
+  <meta property="og:site_name" content="SizePlan">
   <meta property="og:type" content="website">
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <meta property="og:url" content="https://sizeplan.com/">
+  <meta property="og:title" content="SizePlan MT5 - Plan the trade on the chart">
+  <meta property="og:description" content="Drag Entry, Stop Loss and Take Profit on the MT5 chart, get the lot size from your risk in money, send with one click and manage the trade with break-even, trailing stop and partial take profits.">
+  <meta property="og:image" content="https://sizeplan.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SizePlan MT5: a trade plan with entry, stop loss and take profit on a MetaTrader 5 chart">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SizePlan MT5 - Plan the trade on the chart">
+  <meta name="twitter:description" content="Drag Entry, Stop Loss and Take Profit on the MT5 chart, get the lot size from your risk in money, send with one click and manage the trade with break-even, trailing stop and partial take profits.">
+  <meta name="twitter:image" content="https://sizeplan.com/assets/og-image.png">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="assets/style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://sizeplan.com/#organization",
+      "name": "SizePlan",
+      "url": "https://sizeplan.com/",
+      "logo": "https://sizeplan.com/assets/icon-512.png"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sizeplan.com/#website",
+      "name": "SizePlan",
+      "alternateName": "SizePlan MT5",
+      "url": "https://sizeplan.com/",
+      "publisher": {
+        "@id": "https://sizeplan.com/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://sizeplan.com/#software",
+      "name": "SizePlan MT5",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "MetaTrader 5 Expert Advisor",
+      "operatingSystem": "Windows (MetaTrader 5)",
+      "url": "https://sizeplan.com/",
+      "image": "https://sizeplan.com/assets/og-image.png",
+      "publisher": {
+        "@id": "https://sizeplan.com/#organization"
+      },
+      "description": "Visual trade planner, position size (lot size) calculator and trade manager for MetaTrader 5. Drag Entry, Stop Loss and Take Profit on the chart, size the position from your risk, send it with one click and manage it with break-even, trailing stop and partial take profits.",
+      "featureList": [
+        "Lot size calculated from percent of equity, percent of balance, cash risk or fixed lot",
+        "Draggable Entry, Stop Loss and Take Profit on the chart",
+        "Up to five take-profit levels with partial closes",
+        "One-click market, limit and stop orders",
+        "Trade manager for every position and pending order in the account",
+        "Break-even and trailing stop (fixed, step, candle, swing, ATR)",
+        "Optional prop-firm style limits: risk per trade, daily loss, max positions, max spread"
+      ]
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Size<em>Plan</em></span></a>
+      <a class="brand" href="/"><img src="assets/logo.svg" alt="" width="28" height="28"><span class="brand-name">Size<em>Plan</em></span></a>
       <nav class="nav" aria-label="Main">
-        <a href="index.html#features">Features</a>
+        <a href="/#features">Features</a>
         <a href="quick-start.html">Quick start</a>
         <a href="faq.html">FAQ</a>
         <a class="btn btn-small" href="#availability">MQL5 Market</a>
@@ -161,7 +226,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <nav aria-label="Footer">
-        <a href="index.html">Home</a>
+        <a href="/">Home</a>
         <a href="quick-start.html">Quick start</a>
         <a href="faq.html">FAQ</a>
       </nav>

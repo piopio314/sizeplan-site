@@ -9,9 +9,11 @@ step, hosted on GitHub Pages.
 - `404.html` - GitHub Pages not-found page (uses root-relative links)
 - `assets/style.css` - shared styles; palette matches the EA panel
 - `assets/logo.svg` - logo and favicon
-- `assets/shot-*.webp` - real screenshots from the demo account (panel, chart,
-  Trade Manager), trimmed by 3 px; the numbered pins on them are positioned in
-  percent, so re-check them when a screenshot is replaced
+- `assets/shot-*.webp` - real screenshots from the demo account: panel and
+  Trade Manager from 3.44; plan, dock (history, pending), crosshair, compare,
+  customize and dock settings from 1.02, with MT5's menu bar and chart tabs
+  cropped off. The numbered pins on them are positioned in percent, so re-check
+  them when a screenshot is replaced
 - `assets/og-image.png` - 1200x630 social preview
 
 Rules: English only; describe only behaviour the current EA build has; never

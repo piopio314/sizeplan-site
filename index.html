@@ -63,7 +63,7 @@
       "image": "https://sizeplan.com/assets/og-image.png",
       "offers": {
         "@type": "Offer",
-        "price": "99.00",
+        "price": "30.00",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
         "url": "https://www.mql5.com/en/market/product/198883"
@@ -82,14 +82,24 @@
         "Optional prop-firm style limits: risk per trade, daily loss, max positions, max spread",
         "Open positions drawn on the chart with their live stop and target result",
         "Net break-even that covers commission and negative swap",
-        "Trade history with who closed each trade"
+        "Trade history with who closed each trade",
+        "Plan anchored to the candles: the same plan on every timeframe, zoom and scroll",
+        "Workspace dock under the chart: positions, pending orders and history of the whole account, with costs, sorting and group close",
+        "Chart toolbar in the dock: timeframes, chart type, zoom, sessions, candle countdown and screenshot",
+        "Measuring crosshair with a magnet; keep a measurement as a ruler, trend line, rectangle or Fibonacci",
+        "Compare: a second symbol drawn over the chart, bar for bar",
+        "Trade statistics: win rate, profit factor, expectancy, drawdown and result by symbol"
       ],
       "screenshot": [
         "https://sizeplan.com/assets/shot-panel.webp",
-        "https://sizeplan.com/assets/shot-chart.webp",
-        "https://sizeplan.com/assets/shot-manager.webp"
+        "https://sizeplan.com/assets/shot-plan.webp",
+        "https://sizeplan.com/assets/shot-manager.webp",
+        "https://sizeplan.com/assets/shot-dock-history.webp",
+        "https://sizeplan.com/assets/shot-dock-pending.webp",
+        "https://sizeplan.com/assets/shot-crosshair.webp",
+        "https://sizeplan.com/assets/shot-compare.webp"
       ],
-      "softwareVersion": "3.44"
+      "softwareVersion": "1.02"
     }
   ]
 }
@@ -101,6 +111,7 @@
       <a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="28" height="28"><span>Size<em>Plan</em></span><small>MT5</small></a>
       <nav class="nav" aria-label="Main">
         <a href="/#workflow">How it works</a>
+        <a href="/#dock">Dock</a>
         <a href="/#calculator">Lot calculator</a>
         <a href="/quick-start.html">Quick start</a>
         <a href="/faq.html">FAQ</a>
@@ -154,23 +165,27 @@
       <div class="wrap">
         <div class="section-head">
           <h2>The plan lives on the chart you already use.</h2>
-          <p>No separate window and no lot table. The plan box, the open position and the panel sit on the MetaTrader chart, and every tag shows price, money and distance.</p>
+          <p>No separate window and no lot table. The plan box and the panel sit on the MetaTrader chart, every tag shows price, money and distance, and your open positions and pending orders are drawn there too.</p>
         </div>
         <div class="scroller">
           <figure class="shot">
-            <img src="/assets/shot-chart.webp" width="1994" height="633" loading="lazy" alt="EURUSD M1 chart with the SizePlan panel on the left, a buy plan with take profit plus 1947.68 USD and stop loss minus 994.56 USD, and an open 10.43 lot position drawn with its take profit and a stop already in profit">
-            <span class="pin" style="left:21.6%;top:40%">1</span>
-            <span class="pin" style="left:55.6%;top:12%">2</span>
-            <span class="pin" style="left:55.6%;top:54%">3</span>
-            <span class="pin" style="left:65%;top:22%">4</span>
+            <img src="/assets/shot-plan.webp" width="1704" height="932" loading="lazy" alt="EURUSD M5 chart with the SizePlan panel on the left and a buy plan: the button reads BUY STOP 0.21, risk 0.10% of equity, take profit 1.09787 at plus 25.83 USD and 129 points, entry 1.09658 with 0.21 lot, stop loss 1.09615 at minus 10.29 USD and 43 points">
+            <span class="pin" style="left:13.6%;top:12.9%">1</span>
+            <span class="pin" style="left:24.6%;top:18.8%">2</span>
+            <span class="pin" style="left:30.5%;top:41.3%">3</span>
+            <span class="pin" style="left:49.2%;top:67.3%">4</span>
+            <span class="pin" style="left:30.5%;top:76.9%">5</span>
+            <span class="pin" style="left:78.2%;top:55%">6</span>
           </figure>
         </div>
-        <p class="caption">EURUSD M1, demo account, SizePlan 3.44. On a narrow screen, scroll the picture sideways.</p>
+        <p class="caption">EURUSD M5, demo account, SizePlan 1.02. On a narrow screen, scroll the picture sideways.</p>
         <ol class="legend band-legend">
-          <li><b>The panel</b>Risk, reward/risk, the three levels and the order button, docked on the chart.</li>
-          <li><b>The plan</b>Drag the box, its TP and SL tags or the entry line. Each tag shows price, money and points.</li>
-          <li><b>Entry and lot</b>The entry tag carries the volume. A fixed entry becomes a limit or stop order; a plan that follows the price goes at market.</li>
-          <li><b>The open position</b>A filled trade is drawn with its live stop and target. Here the stop is already past entry: +62.58 USD locked.</li>
+          <li><b>What one click sends</b>The entry is above the price, so the button reads BUY STOP 0.21: the order type and the lot.</li>
+          <li><b>Your risk, in money</b>0.10% of equity is a 10.35 USD budget; the lot is sized so the stop loses no more.</li>
+          <li><b>Take profit</b>Price, gain in money and distance in points, updated while you drag.</li>
+          <li><b>Entry and lot</b>The entry tag carries the volume; its arrows flip the plan to the other side. Drag the middle to move the whole plan.</li>
+          <li><b>Stop loss</b>Price, loss in money and points. Click a label to lock that price.</li>
+          <li><b>Anchored to the candles</b>The box sits on these candles: change the timeframe, zoom or scroll and it is the same plan at that chart's scale.</li>
         </ol>
       </div>
     </section>
@@ -233,6 +248,7 @@
             <ul>
               <li>Lock the reward/risk ratio, or lock one price with a click on its label.</li>
               <li>MARKET PRICE keeps the plan on the live price until you move it.</li>
+              <li>The plan is anchored to the candles like a drawing: change the timeframe, zoom or scroll and you see the same plan at that chart's scale.</li>
               <li>Up to five targets; each earlier one closes its share of the position.</li>
               <li>Lines trigger where you see them: on a Bid chart the Ask-side levels are shifted by the spread when the order is sent.</li>
             </ul>
@@ -261,8 +277,10 @@
             <ul>
               <li>SL, TP and pending entry editable with steppers.</li>
               <li>Partial or full close, cancel pending orders.</li>
-              <li>History for 7, 30 or 90 days, with who closed each trade.</li>
-              <li>Open positions drawn on the chart; the eye in the header hides them.</li>
+              <li>History for 7, 30 or 90 days, with who closed each trade and your own notes.</li>
+              <li>Statistics: net result, win rate, profit factor, expectancy, drawdown and result by symbol.</li>
+              <li>Positions and pending orders drawn on the chart, pending ones dashed; the eye in the header hides them.</li>
+              <li>An order beyond the visible prices gets a chip at the chart edge; one click opens it.</li>
             </ul>
           </div>
           <div class="index-row">
@@ -312,6 +330,110 @@
       </div>
     </section>
 
+    <div class="level"><span class="tag">Workspace dock</span></div>
+
+    <section id="dock" class="wide-shot">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The terminal under your chart.</h2>
+          <p>An optional dock at the bottom or top of the chart, switched on from the panel header. It lists the whole account, draws any trade on the chart with one click and carries MetaTrader's chart tools. The panel's own buttons keep working as before.</p>
+        </div>
+        <div class="scroller">
+          <figure class="shot">
+            <img src="/assets/shot-dock-history.webp" width="1789" height="929" loading="lazy" alt="SizePlan dock under a EURUSD M1 chart: the History tab with costs and net results, one closed trade selected and drawn on the chart with its header (BUY 2.00, +170.00 USD, +1.7 R, closed at SL, 28 minutes), the time the buy limit was placed, the stop moved into profit, and the account line">
+            <span class="pin" style="left:25.4%;top:28%">1</span>
+            <span class="pin" style="left:25.2%;top:56.7%">2</span>
+            <span class="pin" style="left:32.3%;top:42.7%">3</span>
+            <span class="pin" style="left:1.2%;top:86.7%">4</span>
+            <span class="pin" style="left:45.5%;top:79.3%">5</span>
+            <span class="pin" style="left:55.9%;top:76.4%">6</span>
+            <span class="pin" style="left:31.3%;top:98.2%">7</span>
+          </figure>
+        </div>
+        <p class="caption">History tab with one trade drawn, EURUSD M1, demo account, SizePlan 1.02. On a narrow screen, scroll the picture sideways.</p>
+        <ol class="legend band-legend">
+          <li><b>The trade, summed up</b>Side and volume, result in money and in R, how it closed and how long it lasted.</li>
+          <li><b>When the order was placed</b>A trade opened by a limit or stop order shows when that order went in and how long it waited.</li>
+          <li><b>What happened on the way</b>Entry, the stop moved into profit, the exit and the zones, at their real times and prices.</li>
+          <li><b>One click on a row</b>The chart switches to the symbol, scrolls to the trade and draws it. A second click hides it.</li>
+          <li><b>Columns that sort</b>Points, commission, swap and the net result of every trade; click a heading to sort.</li>
+          <li><b>MetaTrader's toolbar, in the dock</b>Timeframes, chart type, zoom, scale, grid, volumes, crosshair, magnet, sessions, screenshot.</li>
+          <li><b>The account line</b>Balance, equity, today's result, the risk to every stop and the risk pending orders would add.</li>
+        </ol>
+
+        <div class="scroller">
+          <figure class="shot">
+            <img src="/assets/shot-dock-pending.webp" width="1784" height="930" loading="lazy" alt="SizePlan dock on a EURUSD M15 chart with Tokyo, London and New York sessions drawn as boxes: the Pending tab with a sell limit, its stop and target in money, reward to risk 2.8 and the distance to fill, the Delete group menu, the X that deletes the order and the account line with the pending risk">
+            <span class="pin" style="left:66.9%;top:24.8%">1</span>
+            <span class="pin" style="left:4.8%;top:76.2%">2</span>
+            <span class="pin" style="left:32%;top:76.2%">3</span>
+            <span class="pin" style="left:59.4%;top:76.2%">4</span>
+            <span class="pin" style="left:79.5%;top:72.4%">5</span>
+            <span class="pin" style="left:52.7%;top:81.8%">6</span>
+            <span class="pin" style="left:91.5%;top:81.8%">7</span>
+            <span class="pin" style="left:34.6%;top:94.6%">8</span>
+          </figure>
+        </div>
+        <p class="caption">Pending tab and trading sessions, EURUSD M15, demo account, SizePlan 1.02.</p>
+        <ol class="legend band-legend">
+          <li><b>Trading sessions</b>Tokyo, London and New York as boxes on the chart, with their hours, colours and style in the settings.</li>
+          <li><b>Trade, Pending, History</b>The whole account, every symbol, whoever opened the trade.</li>
+          <li><b>Timeframes</b>One click, and the dock keeps its state.</li>
+          <li><b>Chart tools</b>Crosshair that measures, magnet, Compare, countdown, sessions; Customize chooses what is shown.</li>
+          <li><b>Close and Delete as a group</b>All, profitable, losing, buys, sells or this symbol, after a review card.</li>
+          <li><b>Distance to fill</b>How far the price is from the pending entry, in points and in R.</li>
+          <li><b>X on every row</b>Closes that position or deletes that order in one click, like MetaTrader's own X.</li>
+          <li><b>Pending risk</b>What the pending orders would add to your risk if they filled.</li>
+        </ol>
+
+        <div class="gallery">
+          <div>
+            <figure class="shot"><img src="/assets/shot-crosshair.webp" width="630" height="420" loading="lazy" alt="SizePlan crosshair measurement on EURUSD M15 from a low to the high at 1.10099: 28 bars, 544 points, 0.50%, 1147.84 USD at the plan's 2.11 lot and 544.00 USD per lot, with Ruler, Trend line, Rectangle and Fibonacci buttons"></figure>
+            <h3>A crosshair that measures</h3>
+            <p>Press and drag: bars, points, percent and money at your plan's lot and per 1 lot. After the release, keep it as a ruler, trend line, rectangle or Fibonacci retracement, or close it with X. The magnet snaps to a candle's open, high, low or close.</p>
+          </div>
+          <div>
+            <figure class="shot"><img src="/assets/shot-compare.webp" width="1255" height="618" loading="lazy" alt="SizePlan Compare on EURUSD M15: GBPUSD drawn over the chart as red candles, scaled from each day open, with its price label next to the last bar"></figure>
+            <h3>Compare two symbols</h3>
+            <p>Another symbol drawn over this chart, bar for bar, as a line or candles. Scale it by percent, to the visible range, from a start point (a candle you pick, or each day, week or month open) or fitted to the last bars.</p>
+          </div>
+          <div>
+            <figure class="shot"><img src="/assets/shot-customize.webp" width="723" height="318" loading="lazy" alt="The dock's Customize window: ticked timeframes, chart, view and tools buttons and a bar showing that everything fits on the strip"></figure>
+            <h3>Your own toolbar</h3>
+            <p>Customize chooses which timeframes and tools sit on the strip. Unticked ones are not lost: they wait under "..." at the end of the strip.</p>
+          </div>
+          <div class="span">
+            <figure class="shot"><img src="/assets/shot-dock-settings.webp" width="1002" height="270" loading="lazy" alt="Dock and chart settings: Tokyo, London and New York session hours and colours, outline or filled boxes, the magnet's reach, the candle countdown, drawing colours, trade label size and the history range"></figure>
+            <h3>Settings in one window</h3>
+            <p>Session hours in each market's local time with the server times shown, colours and style; the magnet's reach; the countdown; colours of measurements and the crosshair; label size and history range.</p>
+          </div>
+        </div>
+
+        <div class="index">
+          <div class="index-row">
+            <div class="no">06</div>
+            <div><h3>See the whole account</h3><p>Trade, Pending and History tabs for every symbol, like MetaTrader's Toolbox, with the height you set.</p></div>
+            <ul>
+              <li>Click a heading to sort. Rows show the result in points and money, SL and TP in money, commission, swap and the net result.</li>
+              <li>One click on a row switches the chart to its symbol, scrolls to the trade and draws it from entry to exit: zones, exits, result in money and R, close reason and duration.</li>
+              <li>An X on each row closes the position or deletes the order; Close and Delete act on a group (all, profitable, losing, buys, sells, this symbol) after a review card.</li>
+              <li>The account line shows balance, equity, today's result, the risk to every stop and the risk pending orders would add, plus SizePlan's latest message.</li>
+            </ul>
+          </div>
+          <div class="index-row">
+            <div class="no">07</div>
+            <div><h3>Work the chart from one strip</h3><p>MetaTrader's toolbar buttons, in the dock, so the native toolbars can stay hidden. Customize chooses what is on the strip.</p></div>
+            <ul>
+              <li>Timeframes, chart type, zoom, fixed price scale, auto scroll, chart shift, grid, volumes, period separators, trade history and trade levels.</li>
+              <li>A crosshair that measures bars, points, percent and money at your lot; keep a measurement as a ruler, trend line, rectangle or Fibonacci. A magnet snaps to open, high, low or close.</li>
+              <li>Compare: a second symbol drawn over the chart bar for bar, scaled by percent, to the visible range, from a start candle or fitted to the last bars.</li>
+              <li>Tokyo, London and New York sessions, a candle countdown and a screenshot button, with their own settings.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="level red"><span class="tag">Limits of the tool</span></div>
 
     <section id="limits">
@@ -337,7 +459,7 @@
       <div class="wrap">
         <h2>Now on the <span class="hl">MQL5 Market.</span></h2>
         <div>
-          <p>Get SizePlan from the official MQL5 Market: buy it for 99 USD or rent it for 30 USD a month. Try it first: the free demo runs in the MetaTrader Strategy Tester. After purchase MetaTrader installs it for you, and the quick start walks through every control.</p>
+          <p>Get SizePlan from the official MQL5 Market for 30 USD. Try it first: the free demo runs in the MetaTrader Strategy Tester. After purchase MetaTrader installs it for you, and the quick start walks through every control.</p>
           <div class="actions">
             <a class="btn btn-buy" href="https://www.mql5.com/en/market/product/198883" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9"/></svg>Get SizePlan on MQL5 Market</a>
             <a class="btn" href="https://www.mql5.com/en/market/product/198883" target="_blank" rel="noopener">Download the free demo</a>

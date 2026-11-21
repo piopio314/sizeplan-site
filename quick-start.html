@@ -50,7 +50,7 @@
       "about": {
         "@id": "https://sizeplan.com/#software"
       },
-      "dateModified": "2026-09-29"
+      "dateModified": "2026-11-21"
     },
     {
       "@type": "BreadcrumbList",
@@ -79,6 +79,7 @@
       <a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="28" height="28"><span>Size<em>Plan</em></span><small>MT5</small></a>
       <nav class="nav" aria-label="Main">
         <a href="/#workflow">How it works</a>
+        <a href="/#dock">Dock</a>
         <a href="/#calculator">Lot calculator</a>
         <a href="/quick-start.html" aria-current="page">Quick start</a>
         <a href="/faq.html">FAQ</a>
@@ -109,6 +110,7 @@
             <li><a href="#send">Send the order</a></li>
             <li><a href="#manage">Manage the trade</a></li>
             <li><a href="#automation">Break-even and trailing</a></li>
+            <li><a href="#dock">The dock and chart tools</a></li>
             <li><a href="#inputs">Inputs reference</a></li>
             <li><a href="#trouble">If something does not work</a></li>
           </ol>
@@ -137,7 +139,7 @@
             <li>On the <strong>Inputs</strong> tab, set <code>EnableTrading</code> to <code>true</code> if you want to send orders. With the default <code>false</code>, SizePlan only plans: the panel works fully, but no order can be sent.</li>
             <li>Click <strong>OK</strong>. The panel appears on the left of the chart.</li>
           </ol>
-          <p>The panel can be moved by dragging it. The eye shows or hides your open positions on the chart, the gear opens the display settings (panel scale and saved setups), the pin fixes the panel in place and <strong>X</strong> folds it without stopping SizePlan.</p>
+          <p>The panel can be moved by dragging it. The header icons, from the left: the dock (see section 9), the SizePlan crosshair, show or hide the plan, the eye (your positions and orders on the chart), the gear for the display settings (panel scale and saved setups), the pin that fixes the panel in place and <strong>X</strong>, which folds it without stopping SizePlan.</p>
           <figure class="shot narrow">
             <img src="/assets/shot-panel.webp" width="383" height="680" loading="lazy" alt="SizePlan planning panel with the risk setup, order levels, auto management and the order button">
           </figure>
@@ -150,9 +152,9 @@
             <li>Or type exact prices into the <strong>ENTRY</strong>, <strong>STOP LOSS</strong> and <strong>TAKE PROFIT</strong> fields; the small arrows move a price by one tick.</li>
           </ol>
           <figure class="shot">
-            <img src="/assets/shot-chart.webp" width="1994" height="633" loading="lazy" alt="A SizePlan buy plan on a EURUSD chart: take profit zone above the entry, stop loss zone below, each tag with price, money and points">
+            <img src="/assets/shot-plan.webp" width="1704" height="932" loading="lazy" alt="A SizePlan buy plan on a EURUSD chart: take profit zone above the entry, stop loss zone below, each tag with price, money and points">
           </figure>
-          <p class="caption">A plan in the middle of the chart and, on the right, an open position drawn with its stop and target.</p>
+          <p class="caption">A buy plan with its take profit, entry and stop tags; the button names the order it will send. Demo account.</p>
           <p>Useful switches:</p>
           <ul>
             <li><strong>RR LOCKED / RR FREE</strong> - with the lock on, moving the stop moves the target so the reward/risk ratio stays the same.</li>
@@ -160,6 +162,7 @@
             <li><strong>MARKET PRICE</strong> anchors the plan at the live price and keeps it following the market until you move or edit the plan.</li>
             <li><strong>+ TP</strong> adds a target (up to five). Each earlier target closes the share you set; the last one is the order's take profit.</li>
           </ul>
+          <p>The plan is anchored to the candles like a drawing: switch the timeframe, zoom or scroll and you see the same prices and the same time span at that chart's scale. A plan that is off screen gets a <strong>PLAN ... SHOW</strong> chip at the chart edge that brings it back to the market.</p>
           <p>The entry type is chosen for you: a plan following the market is sent as a market order; a plan with a fixed entry becomes a limit or stop order, depending on which side of the price it is.</p>
 
           <h2 id="risk">5. Choose your risk</h2>
@@ -194,7 +197,7 @@
             <li>Select a row. Its SL and TP (and entry, for a pending order) are editable right away, with <strong>-</strong>/<strong>+</strong> steppers, the distance in points and the amount at that level. <strong>REVIEW &amp; APPLY</strong> sends the change; <strong>REVERT</strong> reloads the live values.</li>
             <li><strong>BREAK-EVEN</strong> moves the stop to true break-even: just past the open price by the position's costs (commission in and out, a negative swap), so a close there nets zero. The button shows how much it covers.</li>
             <li><strong>% CLOSE</strong> closes the percentage in the field next to it; <strong>CLOSE ALL</strong> closes the position; <strong>CANCEL ORDER</strong> deletes a pending order.</li>
-            <li><strong>HISTORY</strong> shows closed deals for the last 7, 30 or 90 days.</li>
+            <li><strong>HISTORY</strong> shows closed deals for the last 7, 30 or 90 days, with the exit reason and your own notes. The enlarged Trade Manager adds statistics: net result, win rate, profit factor, expectancy, drawdown, a result curve and the result by symbol.</li>
           </ul>
 
           <h2 id="automation">8. Break-even and trailing</h2>
@@ -206,7 +209,23 @@
           <p>Click <strong>APPLY TO POSITION</strong>. Automation runs while SizePlan is attached to a chart in this terminal with <code>EnableTrading=true</code> and Algo Trading on. The automated stop only moves in your favour. If you change the stop or the volume yourself, trailing pauses and tells you why instead of overriding you.</p>
           <p>For your next trades, set the defaults with the <strong>BREAKEVEN</strong> and <strong>TRAILING</strong> tiles in the planning panel.</p>
 
-          <h2 id="inputs">9. Inputs reference</h2>
+          <h2 id="dock">9. The dock and chart tools</h2>
+          <p>The dock icon in the panel header shows a strip at the bottom of the chart; <strong>Move to top</strong> puts it at the top. Drag its edge to set the height. The panel's own buttons keep working as before.</p>
+          <figure class="shot">
+            <img src="/assets/shot-dock-history.webp" width="1789" height="929" loading="lazy" alt="The SizePlan dock with the History tab open and one closed EURUSD trade drawn on the chart from the placed order to the exit">
+          </figure>
+          <p class="caption">The dock's History tab with one trade drawn on the chart, demo account.</p>
+          <ul>
+            <li><strong>Trade</strong>, <strong>Pending</strong> and <strong>History</strong> list the whole account. Click a column heading to sort. Click a row to switch the chart to that trade and draw it from entry to exit; click it again to hide the drawing.</li>
+            <li>The <strong>X</strong> at the end of a row closes that position or deletes that order. <strong>Close</strong> and <strong>Delete</strong> act on a group after a review card while <code>SafeMode</code> is on.</li>
+            <li>The bottom line shows the account: balance, equity, today's result, the risk to every stop and the risk the pending orders would add. SizePlan's messages also appear at its right end, so you see them even with the panel folded.</li>
+            <li>The tool strip holds the timeframes, chart type, zoom, fixed scale, auto scroll, chart shift, grid, volumes, period separators, trade history and levels, candle countdown, sessions, crosshair, magnet, screenshot and <strong>Compare</strong>. <strong>Customize</strong> chooses which are shown; the rest stay under <strong>...</strong>.</li>
+            <li>Crosshair: press and drag to measure bars, points, percent and money; after the release, keep it as a ruler, trend line, rectangle or Fibonacci.</li>
+            <li>Compare: pick a symbol to draw over the chart. For a fixed scale from a start point, click <strong>Pick a candle</strong> and then the candle on the chart; the window stays open while you pick.</li>
+            <li>The gear on the dock sets session hours and colours, the magnet's reach, the countdown, measurement colours, label size and the history range.</li>
+          </ul>
+
+          <h2 id="inputs">10. Inputs reference</h2>
           <div class="table-wrap"><table>
             <thead><tr><th>Input</th><th>Default</th><th>Meaning</th></tr></thead>
             <tbody>
@@ -230,7 +249,7 @@
             </tbody>
           </table></div>
 
-          <h2 id="trouble">10. If something does not work</h2>
+          <h2 id="trouble">11. If something does not work</h2>
           <ul>
             <li><strong>The status line says "Planning only: set EnableTrading=true in EA inputs to trade."</strong> - open the EA properties (F7 on the chart) and set <code>EnableTrading=true</code>.</li>
             <li><strong>"Algo trading is disabled in the terminal"</strong> - press <strong>Algo Trading</strong> in the toolbar and tick <strong>Allow Algo Trading</strong> in the EA properties.</li>

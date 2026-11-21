@@ -219,6 +219,11 @@ section { padding: 96px 0; }
 .scroller { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .wide-shot .scroller .shot { min-width: 880px; }
 .band-legend { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 32px; }
+/* Smaller screenshots side by side, each with a title and a caption. */
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 28px; margin: 56px 0 48px; }
+.gallery h3 { font-size: 22px; margin: 14px 0 6px; }
+.gallery p { margin: 0; color: var(--soft); font-size: 15px; }
+.gallery .span { grid-column: 1 / -1; }
 
 /* Ledger calculator */
 .ledger-grid { display: grid; grid-template-columns: 5fr 6fr; border: 1px solid var(--edge-strong); background: var(--bg-2); }
@@ -379,6 +384,7 @@ td code { white-space: nowrap; }
   .index-row { grid-template-columns: 1fr; gap: 12px; }
   .index-row .no { font-size: 40px; }
   .wont { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr; }
   .wont div, .wont div:not(:nth-child(3n+1)) { padding: 22px 0; border-left: 0; }
   .toc { position: static; }
 }
